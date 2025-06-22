@@ -226,6 +226,26 @@ function initMobileMenu() {
             removeMobileMenuToggle();
         }
     });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+    if (mobileMenuBtn && mobileNavPanel) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNavPanel.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when a link is clicked
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNavPanel.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+        });
+    });
 }
 
 function createMobileMenuToggle() {
