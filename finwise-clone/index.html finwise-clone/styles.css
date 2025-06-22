@@ -1,0 +1,33 @@
+<!-- Statistics -->
+<section class="statistics bg-gradient">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="stat-number">100+</h3>
+                <p class="stat-label">Clients</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="stat-number">200+</h3>
+                <p class="stat-label">Projects</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="stat-number">10+</h3>
+                <p class="stat-label">Years of Experience</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+.statistics {
+    padding: 80px 0;
+    color: var(--white);
+}
+
+.statistics .stat-number,
+.statistics .stat-label {
+    color: var(--white);
+}
+
+.stats-grid {
+    display: grid;
+} 
