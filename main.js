@@ -260,12 +260,84 @@ function initHeader() {
             requestAnimationFrame(frame);
         };
         
+        // Función para mostrar mensajes temporales al usuario
+        const showTemporaryMessage = (message) => {
+            // Remover mensaje anterior si existe
+            const existingMessage = document.querySelector('.temp-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Crear el elemento del mensaje
+            const messageEl = document.createElement('div');
+            messageEl.className = 'temp-message';
+            messageEl.textContent = message;
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #ff8a00;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 9999;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            // Agregar al body
+            document.body.appendChild(messageEl);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                if (messageEl && messageEl.parentNode) {
+                    messageEl.style.animation = 'slideOutRight 0.3s ease-in';
+                    setTimeout(() => {
+                        messageEl.remove();
+                    }, 300);
+                }
+            }, 3000);
+        };
+
         const updateSliderBackground = () => {
             const min = carValueSlider.min;
             const max = carValueSlider.max;
             const val = carValueSlider.value;
             const percentage = ((val - min) / (max - min)) * 100;
             carValueSlider.style.background = `linear-gradient(90deg, #00bfae ${percentage}%, #e0f7fa ${percentage}%)`;
+        };
+        
+        // Función para verificar si todos los campos están completos
+        const checkFormCompleteness = () => {
+            const privacyCheckbox = document.getElementById('privacy-policy-checkbox');
+            const submitBtn = document.getElementById('submit-calculator-btn');
+            const nameInput = document.getElementById('name-v2');
+            const emailInput = document.getElementById('email-v2');
+            
+            if (!privacyCheckbox || !submitBtn || !nameInput || !emailInput) return;
+            
+            const carValue = carValueSlider.value;
+            const downPayment = downPaymentInput.value.trim();
+            const selectedTerm = document.querySelector('.term-buttons-v2 .term-button.active');
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const privacyChecked = privacyCheckbox.checked;
+            
+            // Verificar que todos los campos estén completos
+            const allFieldsComplete = carValue && 
+                                    downPayment && 
+                                    selectedTerm && 
+                                    name && 
+                                    email && 
+                                    privacyChecked;
+            
+            if (allFieldsComplete) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
         };
 
         const updateDisplay = () => {
@@ -274,19 +346,58 @@ function initHeader() {
 
             const minDownPayment = value * 0.30;
             downPaymentInput.placeholder = `Mín: ${formatCurrency(minDownPayment).replace('.00','')}`;
-            downPaymentInput.min = minDownPayment;
+            // No establecer min en HTML, manejamos la validación con JS
+            // downPaymentInput.min = minDownPayment;
+
+            // Si hay un valor de enganche actual y es menor al nuevo mínimo, ajustarlo
+            const currentDownPayment = parseFloat(downPaymentInput.value);
+            if (downPaymentInput.value && !isNaN(currentDownPayment) && currentDownPayment < minDownPayment) {
+                downPaymentInput.value = Math.round(minDownPayment);
+                showTemporaryMessage(`Enganche ajustado automáticamente al nuevo mínimo (30%): ${formatCurrency(minDownPayment)}`);
+            }
 
             updateSliderBackground();
             check1.classList.add('visible');
         };
 
-        carValueSlider.addEventListener('input', updateDisplay);
+        carValueSlider.addEventListener('input', () => {
+            updateDisplay();
+            checkFormCompleteness();
+        });
 
+        // Deshabilitar validación HTML5 del campo enganche para que no interfiera
+        downPaymentInput.removeAttribute('min');
+        
         downPaymentInput.addEventListener('input', () => {
-            if(downPaymentInput.value) {
+            if (downPaymentInput.value) {
                 check2.classList.add('visible');
             } else {
                 check2.classList.remove('visible');
+            }
+            
+            // Verificar completitud del formulario
+            if (typeof checkFormCompleteness === 'function') {
+                checkFormCompleteness();
+            }
+        });
+
+        // Validación simple: cuando el usuario sale del campo, ajustar si es necesario
+        downPaymentInput.addEventListener('blur', () => {
+            if (downPaymentInput.value) {
+                const currentCarValue = parseFloat(carValueSlider.value);
+                const minDownPayment = currentCarValue * 0.30;
+                const enteredValue = parseFloat(downPaymentInput.value);
+                
+                // Si el valor es menor al 30%, ajustarlo automáticamente
+                if (!isNaN(enteredValue) && enteredValue < minDownPayment) {
+                    downPaymentInput.value = Math.round(minDownPayment);
+                    showTemporaryMessage(`Enganche ajustado al mínimo requerido (30%): ${formatCurrency(minDownPayment)}`);
+                }
+            }
+            
+            // Verificar completitud del formulario
+            if (typeof checkFormCompleteness === 'function') {
+                checkFormCompleteness();
             }
         });
 
@@ -295,6 +406,11 @@ function initHeader() {
                 termButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
                 check3.classList.add('visible');
+                
+                // Verificar completitud del formulario después de seleccionar plazo
+                if (typeof checkFormCompleteness === 'function') {
+                    checkFormCompleteness();
+                }
             });
         });
 
@@ -330,30 +446,36 @@ function initHeader() {
             e.preventDefault();
             
             const carValue = parseFloat(carValueSlider.value);
-            const downPayment = parseFloat(downPaymentInput.value);
+            const downPayment = parseFloat(downPaymentInput.value) || 0;
             const term = parseInt(document.querySelector('.term-buttons-v2 .term-button.active').dataset.term);
             
-            const minDownPayment = carValue * 0.30;
-            if (isNaN(downPayment) || downPayment < minDownPayment) {
-                alert(`El enganche debe ser de al menos el 30% (${formatCurrency(minDownPayment)}).`);
-                return;
-            }
-
+            // Calcular usando la misma fórmula de Webflow
             const loanAmount = carValue - downPayment;
-            const creditWithCommission = loanAmount / (1 - COMMISSION_RATE);
+            const creditWithCommission = loanAmount / 0.97; // Webflow formula
+            const IVA = 0.16;
+            const gpsRent = 400;
+            const annualInterestRate = 0.45 * (1 + IVA);
+            const monthlyInterestRate = annualInterestRate / 12;
+            const monthlyPayment = (creditWithCommission * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -term)) + gpsRent;
             
-            const pmt = (creditWithCommission * MONTHLY_INTEREST_RATE) / (1 - Math.pow(1 + MONTHLY_INTEREST_RATE, -term));
-            const monthlyPayment = pmt + GPS_RENT;
+            // Para el mensaje, usar el monto simplificado (valor del auto - enganche)
+            const displayFinancedAmount = carValue - downPayment;
 
-            if(isNaN(monthlyPayment) || !isFinite(monthlyPayment)) {
-                alert("Por favor, verifica los datos ingresados. No se pudo calcular la mensualidad.");
-                return;
-            }
-
+            const message = `¡Hola! Me interesa el crédito automotriz con la siguiente cotización:%0A%0A` +
+                `💰 *Valor del Auto:* ${formatCurrency(carValue)}%0A` +
+                `📊 *Enganche Inicial:* ${formatCurrency(downPayment)}%0A` +
+                `🏦 *Monto a Financiar:* ${formatCurrency(displayFinancedAmount)}%0A` +
+                `📅 *Plazo de Crédito:* ${term} meses%0A` +
+                `💳 *Pago Mensual:* ${formatCurrency(monthlyPayment)}%0A%0A` +
+                `Nombre: ${nameInput.value}%0A` +
+                `Email: ${emailInput.value}%0A%0A` +
+                `¿Podrían contactarme para continuar con el proceso?`;
+            
             calculatorCard.classList.add('is-flipped');
             
-            amountFinancedResultEl.textContent = formatCurrency(creditWithCommission);
-            amountFinancedResultEl.dataset.value = creditWithCommission;
+            // Para el front-end, mostrar solo: Valor del Auto - Enganche
+            amountFinancedResultEl.textContent = formatCurrency(displayFinancedAmount);
+            amountFinancedResultEl.dataset.value = displayFinancedAmount;
 
             quoteCarValueEl.textContent = formatCurrency(carValue);
             quoteDownPaymentEl.textContent = formatCurrency(downPayment);
@@ -366,6 +488,21 @@ function initHeader() {
             calculatorCard.classList.remove('is-flipped');
         });
         
+        // Configurar event listeners para todos los campos
+        const privacyCheckbox = document.getElementById('privacy-policy-checkbox');
+        const submitBtn = document.getElementById('submit-calculator-btn');
+        const nameInput = document.getElementById('name-v2');
+        const emailInput = document.getElementById('email-v2');
+        
+        if (privacyCheckbox && submitBtn && nameInput && emailInput) {
+            nameInput.addEventListener('input', checkFormCompleteness);
+            emailInput.addEventListener('input', checkFormCompleteness);
+            privacyCheckbox.addEventListener('change', checkFormCompleteness);
+            
+            // Verificar estado inicial
+            checkFormCompleteness();
+        }
+
         // Event listener for the new WhatsApp button
         if(initiateWhatsAppBtn) {
             initiateWhatsAppBtn.addEventListener('click', () => {
@@ -375,13 +512,15 @@ function initHeader() {
                 const monthlyPaymentText = monthlyPaymentResultEl.textContent;
                 const amountFinancedText = amountFinancedResultEl.textContent;
 
-                const message = `Hola, me gustaría iniciar mi solicitud de crédito automotriz con los siguientes datos de mi simulación:
-- Valor del Auto: ${carValueText}
-- Enganche Inicial: ${downPaymentText}
-- Monto a Financiar: ${amountFinancedText}
-- Plazo: ${termText}
-- Pago Mensual Estimado: ${monthlyPaymentText}
-Gracias.`;
+                const message = `¡Hola! Me interesa el crédito automotriz con la siguiente cotización:%0A%0A` +
+                    `💰 *Valor del Auto:* ${carValueText}%0A` +
+                    `📊 *Enganche Inicial:* ${downPaymentText}%0A` +
+                    `🏦 *Monto a Financiar:* ${amountFinancedText}%0A` +
+                    `📅 *Plazo de Crédito:* ${termText}%0A` +
+                    `💳 *Pago Mensual:* ${monthlyPaymentText}%0A%0A` +
+                    `Nombre: ${nameInput.value}%0A` +
+                    `Email: ${emailInput.value}%0A%0A` +
+                    `¿Podrían contactarme para continuar con el proceso?`;
                 
                 const whatsappNumber = "528123212045";
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -444,6 +583,122 @@ Gracias.`;
             }
         }
         initCarAnimation();
+        
+        // Hero CTA button scroll functionality
+        const heroCtaBtn = document.getElementById('hero-cta-btn');
+        if (heroCtaBtn) {
+            heroCtaBtn.addEventListener('click', () => {
+                const calculatorSection = document.getElementById('calculator');
+                if (calculatorSection) {
+                    calculatorSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+        
+        // Initialize Nosotros page effects
+        initNosotrosEffects();
     });
+
+    // Nosotros page special effects - Optimized
+    function initNosotrosEffects() {
+        // Check if we're on nosotros page
+        if (!document.querySelector('.hero-nosotros')) return;
+        
+        // Throttled parallax effect
+        initOptimizedParallax();
+        
+        // Timeline counter animation (optimized)
+        initTimelineCounters();
+        
+        // Simplified hover effects
+        initSimplifiedHoverEffects();
+    }
+    
+    // Optimized parallax with throttling
+    function initOptimizedParallax() {
+        const hero = document.querySelector('.hero-nosotros');
+        if (!hero) return;
+        
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3; // Reduced intensity
+            hero.style.transform = `translateY(${rate}px)`;
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+    }
+    
+    function initTimelineCounters() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        if (timelineItems.length === 0) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const yearElement = entry.target.querySelector('h3');
+                    if (yearElement && !yearElement.classList.contains('counted')) {
+                        yearElement.classList.add('counted');
+                        const yearMatch = yearElement.textContent.match(/\d{4}/);
+                        if (yearMatch) {
+                            animateYear(yearElement, parseInt(yearMatch[0]));
+                        }
+                    }
+                }
+            });
+        }, { threshold: 0.3 }); // Reduced threshold for better performance
+        
+        timelineItems.forEach(item => observer.observe(item));
+    }
+    
+    function animateYear(element, targetYear) {
+        const startYear = 2000;
+        const duration = 1000; // Reduced duration
+        const startTime = performance.now();
+        const originalText = element.textContent;
+        
+        function updateYear(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = 1 - Math.pow(1 - progress, 2); // Simpler easing
+            const currentYear = Math.round(startYear + (targetYear - startYear) * easeProgress);
+            
+            element.textContent = originalText.replace(/\d{4}/, currentYear);
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateYear);
+            }
+        }
+        
+        requestAnimationFrame(updateYear);
+    }
+    
+    function initSimplifiedHoverEffects() {
+        const cards = document.querySelectorAll('.mission-item, .vision-item');
+        if (cards.length === 0) return;
+        
+        cards.forEach(card => {
+            // Simplified tilt effect with reduced intensity
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
 
 })();

@@ -59,7 +59,7 @@
             <div class="container hero-content-automotriz" data-aos="fade-in">
                 <h1 class="hero-headline"><span class="headline-glow">Estrena tu auto, sin importar tu buró</span></h1>
                 <p class="hero-subtitle">Conduce hacia tus metas. Obtén tu crédito automotriz rápido, fácil y sin complicaciones.</p>
-                <button class="cta-button-hero" onclick="document.getElementById('car-value-slider').scrollIntoView({behavior: 'smooth'})">Simula tu crédito ahora</button>
+                <button class="cta-button-hero" id="hero-cta-btn">Simula tu crédito ahora</button>
             </div>
         </section>
 
@@ -113,7 +113,16 @@
                                         <input type="email" id="email-v2" class="styled-input" placeholder="tu@correo.com">
                                     </div>
                                 </div>
-                                <button type="submit" class="cta-button-form">Calcular mi Crédito →</button>
+                                
+                                <!-- Checkbox de política de privacidad -->
+                                <div class="privacy-policy-section">
+                                    <label class="privacy-checkbox-label">
+                                        <input type="checkbox" id="privacy-policy-checkbox" name="privacy-policy" required>
+                                        <span class="privacy-checkbox-text">Autorizo a Fincentiva a recopilar y utilizar mi información personal de acuerdo con su <a href="#" target="_blank">política de privacidad</a>.</span>
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="cta-button-form" id="submit-calculator-btn" disabled>Calcular mi Crédito →</button>
                             </form>
                         </div>
                         <div class="card-face card-back">
@@ -136,11 +145,11 @@
                                         <span>Plazo de Crédito</span>
                                         <p id="quote-term">0 meses</p>
                                     </div>
-                                </div>
+                </div>
                                 <div class="quote-total">
                                     <span>Pago Mensual Total Estimado</span>
                                     <p id="monthly-payment-result" class="quote-value" data-value="0">$0</p>
-                                </div>
+                    </div>
                                 <p class="quote-disclaimer">
                                     *Un asesor se pondrá en contacto contigo para continuar tu solicitud.
                                     <br>
@@ -149,9 +158,9 @@
                                 <div class="quote-buttons">
                                    <button id="initiate-whatsapp-btn" class="btn-primary">Iniciar Solicitud</button>
                                    <button id="flip-back-btn" class="btn-secondary">‹ Ajustar Cotización</button>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
                     </div>
                 </div>
             </div>
