@@ -2186,8 +2186,6 @@ p {
 
 .card-back {
     transform: rotateY(180deg);
-    background: linear-gradient(135deg, #0d2e4e, #1a3b5c);
-    color: #fff;
 }
 
 .calculator-header {
@@ -2341,42 +2339,118 @@ input#car-value-slider-v2::-webkit-slider-thumb {
 
 /* Back of Card */
 .quote-results-v2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2.5rem;
+    color: #333;
     text-align: center;
 }
+
 .quote-results-v2 h3 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #1a3a6b;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
-.quote-item {
+
+.quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+    width: 100%;
     margin-bottom: 1.5rem;
 }
-.quote-item span {
-    font-size: 1rem;
-    color: #a0c0e0;
+
+.quote-item {
+    background-color: #f7f9fc;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
 }
-.quote-value {
-    font-size: 3rem;
+
+.quote-item span {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.25rem;
+}
+
+.quote-item p {
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #00ffd0;
+    color: #1a3a6b;
     margin: 0;
 }
+
+.quote-total {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-top: 2px solid #e0e5f0;
+}
+
+.quote-total span {
+    font-size: 1rem;
+    color: #555;
+}
+
+.quote-total p {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ff8a00;
+    margin: 0.25rem 0 0 0;
+}
+
 .quote-disclaimer {
     font-size: 0.8rem;
-    color: #a0c0e0;
+    color: #777;
+    margin-top: 1.5rem;
+    line-height: 1.4;
+    max-width: 90%;
+}
+
+.quote-buttons {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
     margin-top: 2rem;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
 }
-#flip-back-btn {
-    margin-top: 1rem;
-    background: transparent;
-    border: 2px solid #a0c0e0;
+
+.quote-buttons .btn-primary,
+.quote-buttons .btn-secondary {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.quote-buttons .btn-primary {
+    background-color: #ff8a00;
     color: #fff;
+    border-color: #ff8a00;
 }
-#flip-back-btn:hover {
-    background: #fff;
-    color: #1a3b5c;
+.quote-buttons .btn-primary:hover {
+    background-color: #e07900;
+    border-color: #e07900;
+    transform: translateY(-2px);
+}
+
+.quote-buttons .btn-secondary {
+    background-color: transparent;
+    color: #1a3a6b;
+    border-color: #1a3a6b;
+}
+.quote-buttons .btn-secondary:hover {
+    background-color: #1a3a6b;
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 /* Remove old calculator styles */

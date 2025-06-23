@@ -203,10 +203,14 @@ function initHeader() {
     function initAutoLoanCalculator() {
         console.log("Initializing Auto Loan Calculator v2 with correct business logic...");
         const form = document.getElementById('auto-loan-form-v2');
-        if (!form) {
-            console.log("Auto Loan Calculator v2 form not found. Aborting.");
-            return;
-        }
+        const monthlyPaymentResultEl = document.getElementById('monthly-payment-result');
+        const amountFinancedResultEl = document.getElementById('amount-financed-result');
+        const quoteCarValueEl = document.getElementById('quote-car-value');
+        const quoteDownPaymentEl = document.getElementById('quote-down-payment');
+        const quoteTermEl = document.getElementById('quote-term');
+        const initiateWhatsAppBtn = document.getElementById('initiate-whatsapp-btn');
+
+        if (!form || !monthlyPaymentResultEl || !amountFinancedResultEl) return;
 
         // --- Financial Constants from Webflow ---
         const IVA = 0.16;
@@ -226,8 +230,6 @@ function initHeader() {
         const check2 = document.getElementById('check-step-2');
         const check3 = document.getElementById('check-step-3');
 
-        const monthlyPaymentResult = document.getElementById('monthly-payment-result');
-        const amountFinancedResult = document.getElementById('amount-financed-result');
         const flipBackButton = document.getElementById('flip-back-btn');
 
         const formatCurrency = (value) => {
@@ -350,14 +352,49 @@ function initHeader() {
 
             calculatorCard.classList.add('is-flipped');
             
-            animateCountUp(monthlyPaymentResult, monthlyPayment);
-            animateCountUp(amountFinancedResult, creditWithCommission);
+            amountFinancedResultEl.textContent = formatCurrency(creditWithCommission);
+            amountFinancedResultEl.dataset.value = creditWithCommission;
+
+            quoteCarValueEl.textContent = formatCurrency(carValue);
+            quoteDownPaymentEl.textContent = formatCurrency(downPayment);
+            quoteTermEl.textContent = `${term} meses`;
+
+            animateCountUp(monthlyPaymentResultEl, monthlyPayment);
         });
 
         flipBackButton.addEventListener('click', () => {
             calculatorCard.classList.remove('is-flipped');
         });
         
+        // Event listener for the new WhatsApp button
+        if(initiateWhatsAppBtn) {
+            initiateWhatsAppBtn.addEventListener('click', () => {
+                const carValueText = quoteCarValueEl.textContent;
+                const downPaymentText = quoteDownPaymentEl.textContent;
+                const termText = quoteTermEl.textContent;
+                const monthlyPaymentText = monthlyPaymentResultEl.textContent;
+                const amountFinancedText = amountFinancedResultEl.textContent;
+
+                const message = `Hola, me gustaría iniciar mi solicitud de crédito automotriz con los siguientes datos de mi simulación:
+- Valor del Auto: ${carValueText}
+- Enganche Inicial: ${downPaymentText}
+- Monto a Financiar: ${amountFinancedText}
+- Plazo: ${termText}
+- Pago Mensual Estimado: ${monthlyPaymentText}
+Gracias.`;
+                
+                const whatsappNumber = "528123212045";
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
+        // Manual input toggle logic
+        const toggleInput = (span, input, onSave) => {
+            // ... existing code ...
+        };
+
         // Initial setup
         updateDisplay();
     }

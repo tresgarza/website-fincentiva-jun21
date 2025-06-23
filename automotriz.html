@@ -97,10 +97,10 @@
                                         <span class="step-check" id="check-step-3">✔</span>
                                     </label>
                                     <div class="term-buttons-v2">
-                                        <button type="button" class="term-button" data-term="12">12m</button>
-                                        <button type="button" class="term-button active" data-term="24">24m</button>
-                                        <button type="button" class="term-button" data-term="36">36m</button>
-                                        <button type="button" class="term-button" data-term="48">48m</button>
+                                        <button type="button" class="term-button" data-term="12">12 meses</button>
+                                        <button type="button" class="term-button" data-term="24">24 meses</button>
+                                        <button type="button" class="term-button" data-term="36">36 meses</button>
+                                        <button type="button" class="term-button active" data-term="48">48 meses</button>
                                     </div>
                                 </div>
                                  <div class="form-group-v2-split">
@@ -119,20 +119,37 @@
                         <div class="card-face card-back">
                             <div class="quote-results-v2">
                                 <h3>¡Excelente! Esta es tu cotización:</h3>
-                                <div class="quote-item">
-                                    <span>Pago Mensual Estimado</span>
+                                <div class="quote-grid">
+                                    <div class="quote-item">
+                                        <span>Valor del Auto</span>
+                                        <p id="quote-car-value">$0</p>
+                                    </div>
+                                    <div class="quote-item">
+                                        <span>Enganche Inicial</span>
+                                        <p id="quote-down-payment">$0</p>
+                                    </div>
+                                    <div class="quote-item">
+                                        <span>Monto a Financiar</span>
+                                        <p id="amount-financed-result" data-value="0">$0</p>
+                                    </div>
+                                    <div class="quote-item">
+                                        <span>Plazo de Crédito</span>
+                                        <p id="quote-term">0 meses</p>
+                                    </div>
+                                </div>
+                                <div class="quote-total">
+                                    <span>Pago Mensual Total Estimado</span>
                                     <p id="monthly-payment-result" class="quote-value" data-value="0">$0</p>
                                 </div>
-                                <div class="quote-item">
-                                    <span>Monto a Financiar</span>
-                                    <p id="amount-financed-result" class="quote-value" data-value="0">$0</p>
+                                <p class="quote-disclaimer">
+                                    *Un asesor se pondrá en contacto contigo para continuar tu solicitud.
+                                    <br>
+                                    *Cotización preliminar sujeta a aprobación. No incluye seguros ni comisiones.
+                                </p>
+                                <div class="quote-buttons">
+                                   <button id="initiate-whatsapp-btn" class="btn-primary">Iniciar Solicitud</button>
+                                   <button id="flip-back-btn" class="btn-secondary">‹ Ajustar Cotización</button>
                                 </div>
-                                 <div class="quote-item">
-                                    <span>Tasa de Interés Anual</span>
-                                    <p>Desde 25%</p>
-                                </div>
-                                <p class="quote-disclaimer">*Esta es una cotización preliminar y está sujeta a aprobación de crédito. No incluye seguros ni comisiones.</p>
-                                <button id="flip-back-btn" class="btn-secondary">‹ Ajustar Cotización</button>
                             </div>
                         </div>
                     </div>
