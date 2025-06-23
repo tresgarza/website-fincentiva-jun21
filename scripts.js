@@ -246,6 +246,53 @@ function initMobileMenu() {
             mobileMenuBtn.classList.remove('active');
         });
     });
+
+    // ROI Calculator Logic
+    const employeeSlider = document.getElementById('employee-slider');
+    const productivitySlider = document.getElementById('productivity-slider');
+    const employeeValue = document.getElementById('employee-value');
+    const productivityValue = document.getElementById('productivity-value');
+    const roiValue = document.getElementById('roi-value');
+
+    function calculateROI() {
+        if (!employeeSlider || !productivitySlider) return;
+
+        const employees = parseInt(employeeSlider.value);
+        const productivity = parseInt(productivitySlider.value);
+        
+        // Illustrative calculation: assumes a base salary and productivity factor
+        const baseSalaryFactor = 15000; // Arbitrary value per employee
+        const estimatedROI = employees * (productivity / 100) * baseSalaryFactor;
+
+        employeeValue.textContent = employees;
+        productivityValue.textContent = `${productivity}`;
+        roiValue.textContent = `$${estimatedROI.toLocaleString('es-MX')} MXN`;
+    }
+
+    if (employeeSlider && productivitySlider) {
+        employeeSlider.addEventListener('input', calculateROI);
+        productivitySlider.addEventListener('input', calculateROI);
+        // Initial calculation
+        calculateROI();
+    }
+
+    // Process Tabs Logic
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const tabId = link.dataset.tab;
+
+            // Deactivate all tabs and contents
+            tabLinks.forEach(item => item.classList.remove('active'));
+            tabContents.forEach(item => item.classList.remove('active'));
+
+            // Activate the clicked tab and corresponding content
+            link.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
 }
 
 function createMobileMenuToggle() {

@@ -1656,6 +1656,268 @@ p {
     gap: 30px;
 }
 
+/* --- New Styles for Empresas Page --- */
+
+/* How it Works V2 */
+.how-it-works-v2 {
+    background-color: var(--gray-light);
+    padding: 80px 0;
+}
+
+.process-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-blue);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    opacity: 0.2;
+}
+
+.process-item {
+    padding: 20px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.process-item:nth-child(odd) {
+    left: 0;
+}
+
+.process-item:nth-child(even) {
+    left: 50%;
+}
+
+.process-icon {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.process-icon img {
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Social Proof Section */
+.social-proof {
+    padding: 80px 0;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    border: 1px solid #eee;
+}
+
+.testimonial-author-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.testimonial-author-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* ROI Calculator Section */
+.roi-calculator-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--gray-dark) 0%, var(--black) 100%);
+    color: var(--white);
+}
+
+.calculator-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.calculator-text h2 {
+    color: var(--white);
+}
+
+.calculator-tool {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.slider-group {
+    margin-bottom: 25px;
+}
+
+.slider {
+  width: 100%;
+}
+
+.roi-result {
+    margin-top: 30px;
+    text-align: center;
+    background: var(--accent-orange);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.roi-result h3 {
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.roi-result p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.roi-result span {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* --- End of New Styles for Empresas Page --- */
+
+/* --- New Styles for Colaboradores Page --- */
+
+.intro-colaboradores {
+    padding: 80px 0;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.intro-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.use-cases {
+    padding: 80px 0;
+    background-color: var(--gray-light);
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.case-card {
+    text-align: center;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.case-icon img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.process-colaboradores-v2 {
+    padding: 80px 0;
+}
+
+.process-tabs-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-link {
+    background: none;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-medium);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.tab-link.active {
+    color: var(--primary-blue);
+}
+
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-blue);
+}
+
+.tab-number {
+    margin-right: 8px;
+    background: rgba(7, 113, 246, 0.1);
+    color: var(--primary-blue);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    line-height: 24px;
+    text-align: center;
+}
+
+.tab-content {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.tab-content.active {
+    display: grid;
+}
+
+.tab-content img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* --- End of New Styles for Colaboradores Page --- */
+
 /* Responsive Design */
 @media (max-width: 992px) {
     h1 {
