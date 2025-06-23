@@ -63,83 +63,79 @@
             </div>
         </section>
 
-        <section class="calculator-section">
+        <section class="calculator-section" id="calculator">
             <div class="container calculator-container">
-                <div class="flip-container">
-                    <div class="flipper">
-                        <!-- Front of the Card -->
-                        <div class="front calculator-info-panel" data-aos="fade-right">
-                            <span class="eyebrow-text">El impulso que necesitas</span>
-                            <h1>El auto de tus sueños, más cerca que nunca</h1>
-                            <p>Nuestro crédito automotriz está diseñado para ser flexible y accesible. Usa nuestra calculadora para descubrir tus opciones.</p>
-                            <div class="process-steps">
-                                <div class="step" id="calc-step-1">
-                                    <span class="step-number">1</span> Simula tu crédito <svg class="checkmark" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-                                </div>
-                                <div class="step" id="calc-step-2">
-                                    <span class="step-number">2</span> Ingresa tus datos <svg class="checkmark" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-                                </div>
-                                <div class="step" id="calc-step-3">
-                                    <span class="step-number">3</span> Conoce tu cuota <svg class="checkmark" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-                                </div>
+                <div class="calculator-scene">
+                    <div class="calculator-card">
+                        <div class="card-face card-front">
+                            <div class="calculator-header">
+                                <h2>Simula tu Crédito Automotriz</h2>
+                                <p>Ajusta los valores para encontrar el plan perfecto para ti.</p>
                             </div>
+                            <form id="auto-loan-form-v2" class="loan-form-v2">
+                                <div class="form-group-v2 slider-group">
+                                    <label for="car-value-slider-v2">
+                                        Valor del Auto
+                                        <span class="step-check" id="check-step-1">✔</span>
+                                    </label>
+                                    <div class="manual-input-wrapper">
+                                        <span id="car-value-display-v2" class="value-display" tabindex="0">$500,000</span>
+                                        <span class="currency-label">MXN</span>
+                                    </div>
+                                    <input type="range" id="car-value-slider-v2" min="50000" max="1000000" value="500000" step="100">
+                                </div>
+                                <div class="form-group-v2">
+                                    <label for="down-payment-v2">
+                                        Enganche
+                                         <span class="step-check" id="check-step-2">✔</span>
+                                    </label>
+                                    <input type="number" id="down-payment-v2" class="styled-input" placeholder="Ej: 150000">
+                                </div>
+                                <div class="form-group-v2">
+                                    <label>
+                                        Plazo del Crédito
+                                        <span class="step-check" id="check-step-3">✔</span>
+                                    </label>
+                                    <div class="term-buttons-v2">
+                                        <button type="button" class="term-button" data-term="12">12m</button>
+                                        <button type="button" class="term-button active" data-term="24">24m</button>
+                                        <button type="button" class="term-button" data-term="36">36m</button>
+                                        <button type="button" class="term-button" data-term="48">48m</button>
+                                    </div>
+                                </div>
+                                 <div class="form-group-v2-split">
+                                    <div class="form-group-v2">
+                                        <label for="name-v2">Nombre(s)</label>
+                                        <input type="text" id="name-v2" class="styled-input" placeholder="Tu nombre">
+                                    </div>
+                                    <div class="form-group-v2">
+                                        <label for="email-v2">Correo Electrónico</label>
+                                        <input type="email" id="email-v2" class="styled-input" placeholder="tu@correo.com">
+                                    </div>
+                                </div>
+                                <button type="submit" class="cta-button-form">Calcular mi Crédito →</button>
+                            </form>
                         </div>
-                        <!-- Back of the Card -->
-                        <div class="back calculator-info-panel quote-results">
-                            <!-- Quote summary will be injected here by JS -->
+                        <div class="card-face card-back">
+                            <div class="quote-results-v2">
+                                <h3>¡Excelente! Esta es tu cotización:</h3>
+                                <div class="quote-item">
+                                    <span>Pago Mensual Estimado</span>
+                                    <p id="monthly-payment-result" class="quote-value" data-value="0">$0</p>
+                                </div>
+                                <div class="quote-item">
+                                    <span>Monto a Financiar</span>
+                                    <p id="amount-financed-result" class="quote-value" data-value="0">$0</p>
+                                </div>
+                                 <div class="quote-item">
+                                    <span>Tasa de Interés Anual</span>
+                                    <p>Desde 25%</p>
+                                </div>
+                                <p class="quote-disclaimer">*Esta es una cotización preliminar y está sujeta a aprobación de crédito. No incluye seguros ni comisiones.</p>
+                                <button id="flip-back-btn" class="btn-secondary">‹ Ajustar Cotización</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Right Column: The Calculator Form -->
-                <div class="calculator-form-panel" data-aos="fade-left">
-                    <form id="auto-loan-form" class="loan-form">
-                        <div class="form-group slider-group">
-                            <label for="car-value-slider">Valor del Auto</label>
-                            <span id="car-value-display" class="slider-value">$500,000 MXN</span>
-                            <input type="range" id="car-value-slider" min="50000" max="1000000" value="500000" step="5000">
-                        </div>
-                        <div class="form-group">
-                            <label>Plazo del Crédito</label>
-                            <div class="term-buttons">
-                                <button type="button" class="term-button active" data-term="6">6 meses</button>
-                                <button type="button" class="term-button" data-term="12">12 meses</button>
-                                <button type="button" class="term-button" data-term="18">18 meses</button>
-                                <button type="button" class="term-button" data-term="24">24 meses</button>
-                                <button type="button" class="term-button" data-term="36">36 meses</button>
-                                <button type="button" class="term-button" data-term="48">48 meses</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="down-payment">Enganche</label>
-                            <input type="number" id="down-payment" placeholder="Mín: $150,000 MXN">
-                        </div>
-                        <div class="form-group-split">
-                            <div class="form-group">
-                                <label for="name">Nombre</label>
-                                <input type="text" id="name" placeholder="Tu nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="lastname">Apellido</label>
-                                <input type="text" id="lastname" placeholder="Tu apellido">
-                            </div>
-                        </div>
-                        <div class="form-group-split">
-                            <div class="form-group">
-                                <label for="phone">Teléfono</label>
-                                <input type="tel" id="phone" placeholder="81 8000 0000">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" placeholder="tu@correo.com">
-                            </div>
-                        </div>
-                        <div class="form-group-checkbox">
-                            <input type="checkbox" id="privacy-policy" checked>
-                            <label for="privacy-policy">Autorizo a Fincentiva a recopilar y utilizar mi información personal de acuerdo con su política de privacidad</label>
-                        </div>
-                        <button type="submit" class="cta-button-form">Calcular mi Crédito</button>
-                    </form>
                 </div>
             </div>
         </section>

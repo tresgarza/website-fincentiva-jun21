@@ -201,148 +201,154 @@ function initHeader() {
     }
 
     function initAutoLoanCalculator() {
-        const form = document.getElementById('auto-loan-form');
-        if (!form) return;
+        console.log("Initializing Auto Loan Calculator v2...");
+        const form = document.getElementById('auto-loan-form-v2');
+        if (!form) {
+            console.log("Auto Loan Calculator v2 form not found. Aborting.");
+            return;
+        }
 
-        console.log('Initializing Auto Loan Calculator...');
+        const calculatorCard = document.querySelector('.calculator-card');
+        const carValueSlider = document.getElementById('car-value-slider-v2');
+        const carValueDisplay = document.getElementById('car-value-display-v2');
+        const downPaymentInput = document.getElementById('down-payment-v2');
+        const termButtons = document.querySelectorAll('.term-buttons-v2 .term-button');
+        
+        const check1 = document.getElementById('check-step-1');
+        const check2 = document.getElementById('check-step-2');
+        const check3 = document.getElementById('check-step-3');
 
-        // --- DOM Elements ---
-        const carValueSlider = document.getElementById('car-value-slider');
-        const carValueDisplay = document.getElementById('car-value-display');
-        const termButtons = document.querySelectorAll('.term-button');
-        const downPaymentInput = document.getElementById('down-payment');
-        const quoteResultsContainer = document.querySelector('.quote-results');
-        const infoContentContainer = document.querySelector('.info-content');
-        const submitButton = form.querySelector('button[type="submit"]');
-        const flipContainer = document.querySelector('.flip-container');
+        const monthlyPaymentResult = document.getElementById('monthly-payment-result');
+        const amountFinancedResult = document.getElementById('amount-financed-result');
+        const flipBackButton = document.getElementById('flip-back-btn');
 
-        // --- Step Elements ---
-        const step1 = document.getElementById('calc-step-1');
-        const step2 = document.getElementById('calc-step-2');
-        const step3 = document.getElementById('calc-step-3');
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-
-        // --- Financial Constants ---
-        const IVA = 0.16;
-        const GPS_RENT = 400;
-        const COMMISSION_RATE = 0.03;
-        const ANNUAL_INTEREST_RATE = 0.45 * (1 + IVA);
-        const MONTHLY_INTEREST_RATE = ANNUAL_INTEREST_RATE / 12;
-
-        let termMonths = 6; // Default term
-
-        // --- Helper Functions ---
         const formatCurrency = (value) => {
-            return `$${value.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(value);
         };
 
-        const calculateMonthlyPayment = (creditAmount, term) => {
-            if (term <= 0) return 0;
-            const monthlyPayment = (creditAmount * MONTHLY_INTEREST_RATE) / (1 - Math.pow(1 + MONTHLY_INTEREST_RATE, -term));
-            return monthlyPayment + GPS_RENT;
+        const animateCountUp = (element, endValue) => {
+            let startValue = 0;
+            const duration = 1500; // ms
+            const startTime = performance.now();
+
+            const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+            const frame = (currentTime) => {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const easedProgress = easeOutExpo(progress);
+                
+                const currentValue = Math.round(easedProgress * endValue);
+                element.textContent = formatCurrency(currentValue);
+
+                if (progress < 1) {
+                    requestAnimationFrame(frame);
+                } else {
+                     element.textContent = formatCurrency(endValue);
+                }
+            };
+            requestAnimationFrame(frame);
         };
         
-        const updateSliderGradient = () => {
-            const min = parseFloat(carValueSlider.min);
-            const max = parseFloat(carValueSlider.max);
+        const updateSliderBackground = () => {
+            const min = carValueSlider.min;
+            const max = carValueSlider.max;
+            const val = carValueSlider.value;
+            const percentage = ((val - min) / (max - min)) * 100;
+            carValueSlider.style.background = `linear-gradient(90deg, #00bfae ${percentage}%, #e0f7fa ${percentage}%)`;
+        };
+
+        const updateDisplay = () => {
             const value = parseFloat(carValueSlider.value);
-            const percentage = ((value - min) / (max - min)) * 100;
-            carValueSlider.style.backgroundSize = `${percentage}% 100%`;
+            carValueDisplay.textContent = formatCurrency(value).replace('.00', '');
+            updateSliderBackground();
+            check1.classList.add('visible');
         };
-        
-        // --- Main Update Function ---
-        const updateCalculation = () => {
-            const carPrice = parseFloat(carValueSlider.value);
-            const minDownPayment = carPrice * 0.3;
 
-            carValueDisplay.textContent = formatCurrency(carPrice).split('.')[0] + ' MXN';
-            downPaymentInput.placeholder = `Mín: ${formatCurrency(minDownPayment).split('.')[0]}`;
-            downPaymentInput.min = minDownPayment;
-            downPaymentInput.max = carPrice;
-            
-            updateSliderGradient();
-            step1.classList.add('completed');
-        };
-        
-        // --- Event Listeners ---
-        carValueSlider.addEventListener('input', updateCalculation);
-        
-        const checkStep2 = () => {
-            if(nameInput.value.trim() !== '' && emailInput.value.trim() !== '') {
-                step2.classList.add('completed');
+        carValueSlider.addEventListener('input', updateDisplay);
+
+        downPaymentInput.addEventListener('input', () => {
+            if(downPaymentInput.value) {
+                check2.classList.add('visible');
+            } else {
+                check2.classList.remove('visible');
             }
-        };
-
-        nameInput.addEventListener('input', checkStep2);
-        emailInput.addEventListener('input', checkStep2);
+        });
 
         termButtons.forEach(button => {
             button.addEventListener('click', () => {
                 termButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                termMonths = parseInt(button.dataset.term);
+                check3.classList.add('visible');
+            });
+        });
+
+        carValueDisplay.addEventListener('click', () => {
+            const currentValue = parseFloat(carValueSlider.value);
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'value-display'; // Use same class for styling
+            input.value = currentValue;
+            
+            carValueDisplay.replaceWith(input);
+            input.focus();
+
+            const handleInputBlur = () => {
+                let newValue = parseFloat(input.value);
+                if (isNaN(newValue) || newValue < carValueSlider.min) newValue = carValueSlider.min;
+                if (newValue > carValueSlider.max) newValue = carValueSlider.max;
+                
+                carValueSlider.value = newValue;
+                input.replaceWith(carValueDisplay);
+                updateDisplay();
+            };
+
+            input.addEventListener('blur', handleInputBlur);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    input.blur();
+                }
             });
         });
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log('Form submitted');
-
-            const carPrice = parseFloat(carValueSlider.value);
-            const downPayment = parseFloat(downPaymentInput.value) || (carPrice * 0.3);
-            const loanAmount = carPrice - downPayment;
-            const creditWithCommission = loanAmount / (1 - COMMISSION_RATE);
-            const monthlyPayment = calculateMonthlyPayment(creditWithCommission, termMonths);
-
-            // Animate the flip
-            flipContainer.classList.add('flipped');
-            step3.classList.add('completed');
-
-            // Create and display quote
-            quoteResultsContainer.innerHTML = `
-                <h2>¡Tu cotización está lista! 🎉</h2>
-                <div class="quote-item">
-                    <span class="quote-item-label">Valor del auto:</span>
-                    <span class="quote-item-value">${formatCurrency(carPrice)}</span>
-                </div>
-                <div class="quote-item">
-                    <span class="quote-item-label">Enganche inicial:</span>
-                    <span class="quote-item-value">${formatCurrency(downPayment)}</span>
-                </div>
-                <div class="quote-item">
-                    <span class="quote-item-label">Monto financiado:</span>
-                    <span class="quote-item-value">${formatCurrency(loanAmount)}</span>
-                </div>
-                <div class="quote-item">
-                    <span class="quote-item-label">Plazo del crédito:</span>
-                    <span class="quote-item-value">${termMonths} meses</span>
-                </div>
-                <div class="quote-item">
-                    <span class="quote-item-label">Pago mensual total:</span>
-                    <span class="quote-item-value" id="monthly-payment-value">${formatCurrency(monthlyPayment)}</span>
-                </div>
-                 <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">Un asesor se pondrá en contacto contigo para brindarte toda la información sobre tu crédito.</p>
-            `;
             
-            anime({
-                targets: '#monthly-payment-value',
-                textContent: monthlyPayment,
-                round: 1,
-                easing: 'easeInOutExpo',
-                duration: 1500,
-                update: function(anim) {
-                    const target = anim.animatables[0].target;
-                    target.innerHTML = formatCurrency(parseFloat(target.textContent));
-                }
-            });
+            const carValue = parseFloat(carValueSlider.value);
+            const downPayment = parseFloat(downPaymentInput.value);
+            const term = parseInt(document.querySelector('.term-buttons-v2 .term-button.active').dataset.term);
+            
+            // Basic validation
+            if (isNaN(downPayment) || downPayment < carValue * 0.1) {
+                alert('El enganche debe ser de al menos el 10% del valor del auto.');
+                return;
+            }
 
-            submitButton.textContent = 'Actualizar Cotización';
-            submitButton.classList.add('secondary');
+            const annualRate = 0.25; // 25% annual interest rate
+            const monthlyRate = annualRate / 12;
+            
+            const amountFinanced = carValue - downPayment;
+            
+            const monthlyPayment = (amountFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+
+            if(isNaN(monthlyPayment) || !isFinite(monthlyPayment)) {
+                alert("Por favor, verifica los datos ingresados.");
+                return;
+            }
+
+            calculatorCard.classList.add('is-flipped');
+            
+            // Animate results
+            animateCountUp(monthlyPaymentResult, monthlyPayment);
+            animateCountUp(amountFinancedResult, amountFinanced);
         });
 
-        // --- Initial Run ---
-        updateCalculation();
+        flipBackButton.addEventListener('click', () => {
+            calculatorCard.classList.remove('is-flipped');
+        });
+        
+        // Initial setup
+        updateDisplay();
     }
 
     function initCarAnimation() {
@@ -380,7 +386,15 @@ function initHeader() {
         initMobileMenu();
         initROICalculator();
         initProcessTabs();
-        initAutoLoanCalculator();
+        if (document.getElementById('auto-loan-form-v2')) {
+            initAutoLoanCalculator();
+        } else {
+            // Fallback for old form if it exists, otherwise do nothing
+            const oldForm = document.getElementById('auto-loan-form');
+            if(oldForm) {
+                oldForm.style.display = 'none'; // Hide old form to prevent conflicts
+            }
+        }
         initCarAnimation();
     });
 
