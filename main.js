@@ -214,6 +214,14 @@ function initHeader() {
         const quoteResultsContainer = document.querySelector('.quote-results');
         const infoContentContainer = document.querySelector('.info-content');
         const submitButton = form.querySelector('button[type="submit"]');
+        const flipContainer = document.querySelector('.flip-container');
+
+        // --- Step Elements ---
+        const step1 = document.getElementById('calc-step-1');
+        const step2 = document.getElementById('calc-step-2');
+        const step3 = document.getElementById('calc-step-3');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
 
         // --- Financial Constants ---
         const IVA = 0.16;
@@ -254,10 +262,20 @@ function initHeader() {
             downPaymentInput.max = carPrice;
             
             updateSliderGradient();
+            step1.classList.add('completed');
         };
         
         // --- Event Listeners ---
         carValueSlider.addEventListener('input', updateCalculation);
+        
+        const checkStep2 = () => {
+            if(nameInput.value.trim() !== '' && emailInput.value.trim() !== '') {
+                step2.classList.add('completed');
+            }
+        };
+
+        nameInput.addEventListener('input', checkStep2);
+        emailInput.addEventListener('input', checkStep2);
 
         termButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -276,6 +294,10 @@ function initHeader() {
             const loanAmount = carPrice - downPayment;
             const creditWithCommission = loanAmount / (1 - COMMISSION_RATE);
             const monthlyPayment = calculateMonthlyPayment(creditWithCommission, termMonths);
+
+            // Animate the flip
+            flipContainer.classList.add('flipped');
+            step3.classList.add('completed');
 
             // Create and display quote
             quoteResultsContainer.innerHTML = `
@@ -296,15 +318,24 @@ function initHeader() {
                     <span class="quote-item-label">Plazo del crédito:</span>
                     <span class="quote-item-value">${termMonths} meses</span>
                 </div>
-                <div class="quote-total">
+                <div class="quote-item">
                     <span class="quote-item-label">Pago mensual total:</span>
-                    <span class="quote-item-value">${formatCurrency(monthlyPayment)}</span>
+                    <span class="quote-item-value" id="monthly-payment-value">${formatCurrency(monthlyPayment)}</span>
                 </div>
                  <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">Un asesor se pondrá en contacto contigo para brindarte toda la información sobre tu crédito.</p>
             `;
             
-            infoContentContainer.style.display = 'none';
-            quoteResultsContainer.style.display = 'block';
+            anime({
+                targets: '#monthly-payment-value',
+                textContent: monthlyPayment,
+                round: 1,
+                easing: 'easeInOutExpo',
+                duration: 1500,
+                update: function(anim) {
+                    const target = anim.animatables[0].target;
+                    target.innerHTML = formatCurrency(parseFloat(target.textContent));
+                }
+            });
 
             submitButton.textContent = 'Actualizar Cotización';
             submitButton.classList.add('secondary');
@@ -312,6 +343,33 @@ function initHeader() {
 
         // --- Initial Run ---
         updateCalculation();
+    }
+
+    function initCarAnimation() {
+        const container = document.getElementById('car-svg-container');
+        if (!container) return;
+
+        // SVG path for a modern-looking car.
+        const svgContent = `
+        <svg viewBox="0 0 500 200">
+            <path d="M10,150 Q20,100 70,100 L150,100 Q160,80 180,80 L320,80 Q340,80 350,100 L430,100 Q480,100 490,150 L10,150 Z"></path>
+            <path d="M150,100 L180,80"></path>
+            <path d="M320,80 L350,100"></path>
+            <path d="M70,100 Q60,130 70,150"></path>
+            <path d="M430,100 Q440,130 430,150"></path>
+            <circle cx="100" cy="150" r="20"></circle>
+            <circle cx="400" cy="150" r="20"></circle>
+        </svg>`;
+        container.innerHTML = svgContent;
+
+        anime({
+            targets: '#car-svg-container svg path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 2500,
+            delay: function(el, i) { return i * 250 },
+            direction: 'forward'
+        });
     }
 
     // Main execution
@@ -323,6 +381,7 @@ function initHeader() {
         initROICalculator();
         initProcessTabs();
         initAutoLoanCalculator();
+        initCarAnimation();
     });
 
 })();

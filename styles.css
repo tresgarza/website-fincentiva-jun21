@@ -2419,4 +2419,123 @@ input[type="range"]::-webkit-slider-thumb {
     .calculator-info-panel h1 {
         font-size: 2.2rem;
     }
+}
+
+/* Hero Section for Automotriz */
+.hero-automotriz {
+    background: linear-gradient(45deg, rgba(0, 179, 138, 0.8), rgba(88, 192, 249, 0.8)), url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content-automotriz h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content-automotriz p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+#car-svg-container {
+    height: 150px;
+    margin-top: 20px;
+}
+
+#car-svg-container svg {
+    height: 100%;
+    width: auto;
+    stroke: #fff;
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 2000; /* A large value to cover path length */
+    stroke-dashoffset: 2000;
+}
+
+/* Flip Container for Calculator */
+.flip-container {
+    perspective: 1000px;
+    flex: 1;
+}
+
+.flipper {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.flip-container.flipped .flipper {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.back.calculator-info-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Initial state for the flipper to have height */
+.flipper, .front {
+    position: relative; /* Change from absolute to relative for the front to set initial height */
+}
+
+
+/* Checkmark animation */
+.checkmark {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-block;
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin-left: 10px;
+    vertical-align: middle;
+    box-shadow: inset 0px 0px 0px #00b38a;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    visibility: hidden;
+}
+
+.step.completed .checkmark {
+    visibility: visible;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+@keyframes scale {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+}
+@keyframes fill {
+    100% { box-shadow: inset 0px 0px 0px 30px #00b38a; }
 } 

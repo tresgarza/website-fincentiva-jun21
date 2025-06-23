@@ -49,22 +49,41 @@
     </div>
 
     <main id="main-content">
+        <section class="hero hero-automotriz">
+            <div class="container hero-content-automotriz" data-aos="fade-in">
+                <h1>Crédito automotriz, incluso con mal buró.</h1>
+                <p>Conduce hacia tus metas. En Fincentiva, te damos la liquidez que necesitas de forma rápida y confiable para que estrenes el auto que quieres.</p>
+                <div id="car-svg-container">
+                    <!-- Animated SVG will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
         <section class="calculator-section">
             <div class="container calculator-container">
-                <!-- Left Column: Will transform from intro to quote summary -->
-                <div class="calculator-info-panel" data-aos="fade-right">
-                    <div class="info-content">
-                        <span class="eyebrow-text">El impulso que necesitas</span>
-                        <h1>El auto de tus sueños, más cerca que nunca</h1>
-                        <p>Nuestro crédito automotriz está diseñado para ser flexible y accesible, incluso si tu historial de crédito no es perfecto. Usa nuestra calculadora para descubrir tus opciones.</p>
-                        <div class="process-steps">
-                            <div class="step" id="step-1"><span>1</span> Simula tu crédito</div>
-                            <div class="step" id="step-2"><span>2</span> Ingresa tus datos</div>
-                            <div class="step" id="step-3"><span>3</span> Conoce tu cuota</div>
+                <div class="flip-container">
+                    <div class="flipper">
+                        <!-- Front of the Card -->
+                        <div class="front calculator-info-panel" data-aos="fade-right">
+                            <span class="eyebrow-text">El impulso que necesitas</span>
+                            <h1>El auto de tus sueños, más cerca que nunca</h1>
+                            <p>Nuestro crédito automotriz está diseñado para ser flexible y accesible. Usa nuestra calculadora para descubrir tus opciones.</p>
+                            <div class="process-steps">
+                                <div class="step" id="calc-step-1">
+                                    <span class="step-number">1</span> Simula tu crédito <svg class="checkmark" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                                </div>
+                                <div class="step" id="calc-step-2">
+                                    <span class="step-number">2</span> Ingresa tus datos <svg class="checkmark" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                                </div>
+                                <div class="step" id="calc-step-3">
+                                    <span class="step-number">3</span> Conoce tu cuota <svg class="checkmark" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="quote-results" style="display: none;">
-                        <!-- Quote summary will be injected here by JS -->
+                        <!-- Back of the Card -->
+                        <div class="back calculator-info-panel quote-results">
+                            <!-- Quote summary will be injected here by JS -->
+                        </div>
                     </div>
                 </div>
 
