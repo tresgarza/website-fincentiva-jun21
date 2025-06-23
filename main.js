@@ -201,13 +201,21 @@ function initHeader() {
     }
 
     function initAutoLoanCalculator() {
-        console.log("Initializing Auto Loan Calculator v2...");
+        console.log("Initializing Auto Loan Calculator v2 with correct business logic...");
         const form = document.getElementById('auto-loan-form-v2');
         if (!form) {
             console.log("Auto Loan Calculator v2 form not found. Aborting.");
             return;
         }
 
+        // --- Financial Constants from Webflow ---
+        const IVA = 0.16;
+        const GPS_RENT = 400;
+        const COMMISSION_RATE = 0.03; // 3%
+        const ANNUAL_INTEREST_RATE = 0.45 * (1 + IVA); // This equals 0.522 or 52.2%
+        const MONTHLY_INTEREST_RATE = ANNUAL_INTEREST_RATE / 12;
+
+        // --- DOM Elements ---
         const calculatorCard = document.querySelector('.calculator-card');
         const carValueSlider = document.getElementById('car-value-slider-v2');
         const carValueDisplay = document.getElementById('car-value-display-v2');
@@ -227,10 +235,9 @@ function initHeader() {
         };
 
         const animateCountUp = (element, endValue) => {
-            let startValue = 0;
-            const duration = 1500; // ms
+            let startValue = parseFloat(element.dataset.value) || 0;
+            const duration = 1500;
             const startTime = performance.now();
-
             const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 
             const frame = (currentTime) => {
@@ -238,13 +245,14 @@ function initHeader() {
                 const progress = Math.min(elapsedTime / duration, 1);
                 const easedProgress = easeOutExpo(progress);
                 
-                const currentValue = Math.round(easedProgress * endValue);
+                const currentValue = startValue + (easedProgress * (endValue - startValue));
                 element.textContent = formatCurrency(currentValue);
 
                 if (progress < 1) {
                     requestAnimationFrame(frame);
                 } else {
                      element.textContent = formatCurrency(endValue);
+                     element.dataset.value = endValue;
                 }
             };
             requestAnimationFrame(frame);
@@ -261,6 +269,11 @@ function initHeader() {
         const updateDisplay = () => {
             const value = parseFloat(carValueSlider.value);
             carValueDisplay.textContent = formatCurrency(value).replace('.00', '');
+
+            const minDownPayment = value * 0.30;
+            downPaymentInput.placeholder = `Mín: ${formatCurrency(minDownPayment).replace('.00','')}`;
+            downPaymentInput.min = minDownPayment;
+
             updateSliderBackground();
             check1.classList.add('visible');
         };
@@ -287,7 +300,7 @@ function initHeader() {
             const currentValue = parseFloat(carValueSlider.value);
             const input = document.createElement('input');
             input.type = 'number';
-            input.className = 'value-display'; // Use same class for styling
+            input.className = 'value-display';
             input.value = currentValue;
             
             carValueDisplay.replaceWith(input);
@@ -318,29 +331,27 @@ function initHeader() {
             const downPayment = parseFloat(downPaymentInput.value);
             const term = parseInt(document.querySelector('.term-buttons-v2 .term-button.active').dataset.term);
             
-            // Basic validation
-            if (isNaN(downPayment) || downPayment < carValue * 0.1) {
-                alert('El enganche debe ser de al menos el 10% del valor del auto.');
+            const minDownPayment = carValue * 0.30;
+            if (isNaN(downPayment) || downPayment < minDownPayment) {
+                alert(`El enganche debe ser de al menos el 30% (${formatCurrency(minDownPayment)}).`);
                 return;
             }
 
-            const annualRate = 0.25; // 25% annual interest rate
-            const monthlyRate = annualRate / 12;
+            const loanAmount = carValue - downPayment;
+            const creditWithCommission = loanAmount / (1 - COMMISSION_RATE);
             
-            const amountFinanced = carValue - downPayment;
-            
-            const monthlyPayment = (amountFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+            const pmt = (creditWithCommission * MONTHLY_INTEREST_RATE) / (1 - Math.pow(1 + MONTHLY_INTEREST_RATE, -term));
+            const monthlyPayment = pmt + GPS_RENT;
 
             if(isNaN(monthlyPayment) || !isFinite(monthlyPayment)) {
-                alert("Por favor, verifica los datos ingresados.");
+                alert("Por favor, verifica los datos ingresados. No se pudo calcular la mensualidad.");
                 return;
             }
 
             calculatorCard.classList.add('is-flipped');
             
-            // Animate results
             animateCountUp(monthlyPaymentResult, monthlyPayment);
-            animateCountUp(amountFinancedResult, amountFinanced);
+            animateCountUp(amountFinancedResult, creditWithCommission);
         });
 
         flipBackButton.addEventListener('click', () => {
