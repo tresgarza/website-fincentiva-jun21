@@ -129,7 +129,6 @@ function initHeader() {
     }
 
     function initROICalculator() {
-        console.log('Attempting to init ROI Calculator...');
         const employeeSlider = document.getElementById('employee-slider');
         const productivitySlider = document.getElementById('productivity-slider');
         const employeeValue = document.getElementById('employee-value');
@@ -150,24 +149,18 @@ function initHeader() {
         }
 
         if (employeeSlider && productivitySlider) {
-            console.log('ROI Calculator elements found. Attaching listeners.');
             employeeSlider.addEventListener('input', calculateROI);
             productivitySlider.addEventListener('input', calculateROI);
             calculateROI();
-        } else {
-            console.error('ROI Calculator elements NOT found.');
         }
     }
 
     function initProcessTabs() {
-        console.log('Attempting to init Process Tabs...');
         const tabContainer = document.querySelector('.process-tabs-container');
         if (!tabContainer) {
-            console.log('Process tabs container not found on this page.');
             return;
         }
 
-        console.log('Process tabs container found. Initializing...');
         const tabLinks = tabContainer.querySelectorAll('.tab-link');
         const tabContents = tabContainer.querySelectorAll('.tab-content');
         let currentTabIndex = 0;
@@ -207,17 +200,129 @@ function initHeader() {
         startTabLoop(); // Start the loop
     }
 
+    function initAutoLoanCalculator() {
+        const form = document.getElementById('auto-loan-form');
+        if (!form) return;
+
+        console.log('Initializing Auto Loan Calculator...');
+
+        // --- DOM Elements ---
+        const carValueSlider = document.getElementById('car-value-slider');
+        const carValueDisplay = document.getElementById('car-value-display');
+        const termButtons = document.querySelectorAll('.term-button');
+        const downPaymentInput = document.getElementById('down-payment');
+        const quoteResultsContainer = document.querySelector('.quote-results');
+        const infoContentContainer = document.querySelector('.info-content');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        // --- Financial Constants ---
+        const IVA = 0.16;
+        const GPS_RENT = 400;
+        const COMMISSION_RATE = 0.03;
+        const ANNUAL_INTEREST_RATE = 0.45 * (1 + IVA);
+        const MONTHLY_INTEREST_RATE = ANNUAL_INTEREST_RATE / 12;
+
+        let termMonths = 6; // Default term
+
+        // --- Helper Functions ---
+        const formatCurrency = (value) => {
+            return `$${value.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        };
+
+        const calculateMonthlyPayment = (creditAmount, term) => {
+            if (term <= 0) return 0;
+            const monthlyPayment = (creditAmount * MONTHLY_INTEREST_RATE) / (1 - Math.pow(1 + MONTHLY_INTEREST_RATE, -term));
+            return monthlyPayment + GPS_RENT;
+        };
+        
+        const updateSliderGradient = () => {
+            const min = parseFloat(carValueSlider.min);
+            const max = parseFloat(carValueSlider.max);
+            const value = parseFloat(carValueSlider.value);
+            const percentage = ((value - min) / (max - min)) * 100;
+            carValueSlider.style.backgroundSize = `${percentage}% 100%`;
+        };
+        
+        // --- Main Update Function ---
+        const updateCalculation = () => {
+            const carPrice = parseFloat(carValueSlider.value);
+            const minDownPayment = carPrice * 0.3;
+
+            carValueDisplay.textContent = formatCurrency(carPrice).split('.')[0] + ' MXN';
+            downPaymentInput.placeholder = `Mín: ${formatCurrency(minDownPayment).split('.')[0]}`;
+            downPaymentInput.min = minDownPayment;
+            downPaymentInput.max = carPrice;
+            
+            updateSliderGradient();
+        };
+        
+        // --- Event Listeners ---
+        carValueSlider.addEventListener('input', updateCalculation);
+
+        termButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                termButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                termMonths = parseInt(button.dataset.term);
+            });
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('Form submitted');
+
+            const carPrice = parseFloat(carValueSlider.value);
+            const downPayment = parseFloat(downPaymentInput.value) || (carPrice * 0.3);
+            const loanAmount = carPrice - downPayment;
+            const creditWithCommission = loanAmount / (1 - COMMISSION_RATE);
+            const monthlyPayment = calculateMonthlyPayment(creditWithCommission, termMonths);
+
+            // Create and display quote
+            quoteResultsContainer.innerHTML = `
+                <h2>¡Tu cotización está lista! 🎉</h2>
+                <div class="quote-item">
+                    <span class="quote-item-label">Valor del auto:</span>
+                    <span class="quote-item-value">${formatCurrency(carPrice)}</span>
+                </div>
+                <div class="quote-item">
+                    <span class="quote-item-label">Enganche inicial:</span>
+                    <span class="quote-item-value">${formatCurrency(downPayment)}</span>
+                </div>
+                <div class="quote-item">
+                    <span class="quote-item-label">Monto financiado:</span>
+                    <span class="quote-item-value">${formatCurrency(loanAmount)}</span>
+                </div>
+                <div class="quote-item">
+                    <span class="quote-item-label">Plazo del crédito:</span>
+                    <span class="quote-item-value">${termMonths} meses</span>
+                </div>
+                <div class="quote-total">
+                    <span class="quote-item-label">Pago mensual total:</span>
+                    <span class="quote-item-value">${formatCurrency(monthlyPayment)}</span>
+                </div>
+                 <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">Un asesor se pondrá en contacto contigo para brindarte toda la información sobre tu crédito.</p>
+            `;
+            
+            infoContentContainer.style.display = 'none';
+            quoteResultsContainer.style.display = 'block';
+
+            submitButton.textContent = 'Actualizar Cotización';
+            submitButton.classList.add('secondary');
+        });
+
+        // --- Initial Run ---
+        updateCalculation();
+    }
+
     // Main execution
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('DOMContentLoaded event fired. Initializing components.');
         initHeader();
         initFaq();
         initProcessAnimation();
         initMobileMenu();
         initROICalculator();
         initProcessTabs();
+        initAutoLoanCalculator();
     });
-
-    console.log('scripts.js loaded and DOMContentLoaded listener attached.');
 
 })();

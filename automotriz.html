@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crédito Automotriz – Financiera Incentiva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo-link">
+                    <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" alt="Financiera Incentiva" class="logo">
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html#creditos">Soluciones de Crédito</a>
+                    <a href="empresas.html">Para Empresas</a>
+                    <a href="colaboradores.html">Para Colaboradores</a>
+                    <a href="nosotros.html">Nuestra Historia</a>
+                    <a href="noticias.html">Noticias</a>
+                    <a href="index.html#preguntas">Ayuda</a>
+                    <a href="index.html#contacto">Contacto</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="https://credito.fincentiva.com.mx" class="cta-button" target="_blank">Solicitar Crédito</a>
+                    <button class="search-button"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f673f81580854d1ab3139_search-icon-white.svg" alt="Buscar"></button>
+                </div>
+                <button class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <a href="index.html#creditos">Soluciones de Crédito</a>
+        <a href="empresas.html">Para Empresas</a>
+        <a href="colaboradores.html">Para Colaboradores</a>
+        <a href="nosotros.html">Nuestra Historia</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="index.html#preguntas">Ayuda</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="https://credito.fincentiva.com.mx" class="cta-button-mobile" target="_blank">Solicitar Crédito</a>
+    </div>
+
+    <main id="main-content">
+        <section class="calculator-section">
+            <div class="container calculator-container">
+                <!-- Left Column: Will transform from intro to quote summary -->
+                <div class="calculator-info-panel" data-aos="fade-right">
+                    <div class="info-content">
+                        <span class="eyebrow-text">El impulso que necesitas</span>
+                        <h1>El auto de tus sueños, más cerca que nunca</h1>
+                        <p>Nuestro crédito automotriz está diseñado para ser flexible y accesible, incluso si tu historial de crédito no es perfecto. Usa nuestra calculadora para descubrir tus opciones.</p>
+                        <div class="process-steps">
+                            <div class="step" id="step-1"><span>1</span> Simula tu crédito</div>
+                            <div class="step" id="step-2"><span>2</span> Ingresa tus datos</div>
+                            <div class="step" id="step-3"><span>3</span> Conoce tu cuota</div>
+                        </div>
+                    </div>
+                    <div class="quote-results" style="display: none;">
+                        <!-- Quote summary will be injected here by JS -->
+                    </div>
+                </div>
+
+                <!-- Right Column: The Calculator Form -->
+                <div class="calculator-form-panel" data-aos="fade-left">
+                    <form id="auto-loan-form" class="loan-form">
+                        <div class="form-group slider-group">
+                            <label for="car-value-slider">Valor del Auto</label>
+                            <span id="car-value-display" class="slider-value">$500,000 MXN</span>
+                            <input type="range" id="car-value-slider" min="50000" max="1000000" value="500000" step="5000">
+                        </div>
+                        <div class="form-group">
+                            <label>Plazo del Crédito</label>
+                            <div class="term-buttons">
+                                <button type="button" class="term-button active" data-term="6">6 meses</button>
+                                <button type="button" class="term-button" data-term="12">12 meses</button>
+                                <button type="button" class="term-button" data-term="18">18 meses</button>
+                                <button type="button" class="term-button" data-term="24">24 meses</button>
+                                <button type="button" class="term-button" data-term="36">36 meses</button>
+                                <button type="button" class="term-button" data-term="48">48 meses</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="down-payment">Enganche</label>
+                            <input type="number" id="down-payment" placeholder="Mín: $150,000 MXN">
+                        </div>
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" placeholder="Tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Apellido</label>
+                                <input type="text" id="lastname" placeholder="Tu apellido">
+                            </div>
+                        </div>
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone" placeholder="81 8000 0000">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="tu@correo.com">
+                            </div>
+                        </div>
+                        <div class="form-group-checkbox">
+                            <input type="checkbox" id="privacy-policy" checked>
+                            <label for="privacy-policy">Autorizo a Fincentiva a recopilar y utilizar mi información personal de acuerdo con su política de privacidad</label>
+                        </div>
+                        <button type="submit" class="cta-button-form">Calcular mi Crédito</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/528182180477" class="whatsapp-float" target="_blank">
+        <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62547b79659a7a665ce94b29_whatsapp-icon.svg" alt="WhatsApp">
+    </a>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" alt="Financiera Incentiva" class="logo-footer">
+                    <p>Financiera Incentiva, S.A.P.I. de C.V., SOFOM E.N.R.</p>
+                    <p>San Antonio 2340, Col. Lomas de San Francisco <br> Monterrey, N.L., C.P. 64710</p>
+                    <p><strong>Tel: +52 81 8218 0477</strong></p>
+                </div>
+                <div class="footer-section links">
+                    <h5>Productos</h5>
+                    <ul>
+                        <li><a href="index.html#creditos">Crédito Vía Nómina</a></li>
+                        <li><a href="automotriz.html">Crédito Automotriz</a></li>
+                        <li><a href="empresas.html">Soluciones Empresariales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h5>Empresa</h5>
+                    <ul>
+                        <li><a href="nosotros.html">Nuestra Historia</a></li>
+                        <li><a href="#contacto-automotriz">Contacto</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h5>Ayuda</h5>
+                    <ul>
+                        <li><a href="index.html#preguntas">Preguntas Frecuentes</a></li>
+                        <li><a href="mailto:une@fincentiva.com.mx">UNE: une@fincentiva.com.mx</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Financiera Incentiva. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a></p>
+                <div class="social-links">
+                    <a href="#"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f6789815808169aab331a_twitter-icon-white.svg" alt="Twitter"></a>
+                    <a href="#"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f6788a1de8d234658d543_facebook-icon-white.svg" alt="Facebook"></a>
+                    <a href="#"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f6788863f91572d4999f7_linkedin-icon-white.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+    <script>
+        AOS.init({ once: true });
+    </script>
+</body>
+</html> 
