@@ -3,17 +3,17 @@
 (function() {
     'use strict';
 
-    function initHeader() {
-        const header = document.getElementById('header');
+function initHeader() {
+    const header = document.getElementById('header');
         if (!header) return;
 
         const observer = new IntersectionObserver(
             ([e]) => {
                 if (e.intersectionRatio < 1) {
-                    header.classList.remove('transparent');
-                } else {
-                    header.classList.add('transparent');
-                }
+            header.classList.remove('transparent');
+        } else {
+            header.classList.add('transparent');
+        }
             },
             { threshold: [1] }
         );
@@ -27,17 +27,17 @@
     }
 
     function initFaq() {
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
+            const isActive = item.classList.contains('active');
                 faqItems.forEach(i => i.classList.remove('active'));
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
+            if (!isActive) {
+                item.classList.add('active');
+            }
         });
+    });
 
         const faqTabs = document.querySelectorAll('.faq-tab');
         const faqPanels = document.querySelectorAll('.faq-panel');
@@ -129,6 +129,7 @@
     }
 
     function initROICalculator() {
+        console.log('Attempting to init ROI Calculator...');
         const employeeSlider = document.getElementById('employee-slider');
         const productivitySlider = document.getElementById('productivity-slider');
         const employeeValue = document.getElementById('employee-value');
@@ -149,16 +150,24 @@
         }
 
         if (employeeSlider && productivitySlider) {
+            console.log('ROI Calculator elements found. Attaching listeners.');
             employeeSlider.addEventListener('input', calculateROI);
             productivitySlider.addEventListener('input', calculateROI);
             calculateROI();
+        } else {
+            console.error('ROI Calculator elements NOT found.');
         }
     }
 
     function initProcessTabs() {
+        console.log('Attempting to init Process Tabs...');
         const tabContainer = document.querySelector('.process-tabs-container');
-        if (!tabContainer) return;
+        if (!tabContainer) {
+            console.log('Process tabs container not found on this page.');
+            return;
+        }
 
+        console.log('Process tabs container found. Initializing...');
         const tabLinks = tabContainer.querySelectorAll('.tab-link');
         const tabContents = tabContainer.querySelectorAll('.tab-content');
         let currentTabIndex = 0;
@@ -200,6 +209,7 @@
 
     // Main execution
     document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded event fired. Initializing components.');
         initHeader();
         initFaq();
         initProcessAnimation();
@@ -207,5 +217,7 @@
         initROICalculator();
         initProcessTabs();
     });
+
+    console.log('scripts.js loaded and DOMContentLoaded listener attached.');
 
 })();
