@@ -2599,4 +2599,82 @@ input[type="range"]::-webkit-slider-thumb {
 .requirement-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-} 
+}
+
+/* HERO AUTOMOTRIZ NUEVO DISEÑO */
+.hero-headline {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  animation: heroSlideUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.headline-glow {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(90deg, #fff 60%, #00ffd0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: headlineGlowAnim 2.5s ease-in-out 1;
+}
+
+@keyframes headlineGlowAnim {
+  0% { filter: brightness(1) drop-shadow(0 0 0 #00ffd0); }
+  40% { filter: brightness(2) drop-shadow(0 0 16px #00ffd0); }
+  60% { filter: brightness(2.5) drop-shadow(0 0 32px #00ffd0); }
+  100% { filter: brightness(1) drop-shadow(0 0 0 #00ffd0); }
+}
+
+@keyframes heroSlideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  color: #e0f7fa;
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: heroFadeIn 1.5s 0.5s both;
+}
+
+@keyframes heroFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.cta-button-hero {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #00ffd0 0%, #00bfae 100%);
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 4px 24px 0 rgba(0,255,208,0.15);
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  animation: pulseGlow 2s infinite;
+}
+
+.cta-button-hero:hover {
+  background: linear-gradient(90deg, #00bfae 0%, #00ffd0 100%);
+  box-shadow: 0 6px 32px 0 rgba(0,255,208,0.25);
+  transform: scale(1.05);
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(0,255,208,0.4); }
+  70% { box-shadow: 0 0 0 16px rgba(0,255,208,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,255,208,0); }
+}
+
+/* Eliminar estilos del SVG anterior si existen */
+#car-svg-container { display: none !important; } 
