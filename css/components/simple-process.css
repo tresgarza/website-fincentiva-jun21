@@ -1,0 +1,133 @@
+/*
+==========================================
+   SIMPLE PROCESS SECTION (Vertical Steps)
+========================================== */
+
+.simple-process {
+    padding: var(--space-16) 0;
+    background-color: var(--color-neutral-0);
+    position: relative;
+}
+
+.simple-process .section-header {
+    margin-bottom: var(--space-12);
+    text-align: center;
+}
+
+/* Ordered list holds steps and draws the base line */
+.steps-list {
+    counter-reset: step-counter;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.steps-list::before {
+    content: "";
+    position: absolute;
+    left: 20px; /* aligns under icons */
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-neutral-200);
+}
+
+/* Single step */
+.step-item {
+    position: relative;
+    display: flex;
+    gap: var(--space-6);
+    margin-bottom: var(--space-16);
+    opacity: 0.35;
+    transform: translateY(40px);
+    transition: opacity var(--duration-500) var(--ease-out), transform var(--duration-500) var(--ease-out);
+}
+
+.step-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Progress segment (drawn on li itself so it can animate) */
+.step-item::before {
+    content: "";
+    position: absolute;
+    left: 20px; /* align with global line */
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-primary-500);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform var(--duration-500) var(--ease-out);
+}
+
+/* Icon circle */
+.step-icon {
+    position: relative;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-neutral-200);
+    color: var(--color-neutral-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: background-color var(--duration-300) var(--ease-out), transform var(--duration-300) var(--ease-out), color var(--duration-300) var(--ease-out);
+}
+
+/* Text content */
+.step-body h4 {
+    font-size: var(--font-size-xl);
+    margin: 0 0 var(--space-2) 0;
+    color: var(--color-neutral-800);
+}
+
+.step-body p {
+    margin: 0;
+    color: var(--color-neutral-600);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+}
+
+/* ----- Active/Visited states ----- */
+.step-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-item.in-view::before {
+    transform: scaleY(1);
+}
+
+.step-item.in-view .step-icon {
+    background-color: var(--color-primary-500);
+    color: var(--color-neutral-0);
+    transform: scale(1.25);
+    box-shadow: 0 4px 12px rgba(57, 168, 96, 0.3);
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .step-item,
+    .step-item::before,
+    .step-icon {
+        transition: none !important;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .steps-list::before,
+    .step-item::before {
+        display: none;
+    }
+    .step-item {
+        gap: var(--space-4);
+        margin-bottom: var(--space-12);
+    }
+} 

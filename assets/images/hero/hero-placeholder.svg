@@ -1,0 +1,101 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#39a860;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0771f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="overlayGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Patterns -->
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="40" height="40">
+      <circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+    
+    <!-- Filters -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main Background -->
+  <rect width="1200" height="675" fill="url(#bgGradient)"/>
+  
+  <!-- Pattern Overlay -->
+  <rect width="1200" height="675" fill="url(#dots)" opacity="0.3"/>
+  
+  <!-- Gradient Overlay -->
+  <rect width="1200" height="675" fill="url(#overlayGradient)"/>
+  
+  <!-- Financial Icons -->
+  <g transform="translate(100, 100)" opacity="0.2">
+    <!-- Dollar Sign -->
+    <circle cx="50" cy="50" r="25" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+    <text x="50" y="58" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Arial, sans-serif" font-size="20" font-weight="bold">$</text>
+  </g>
+  
+  <g transform="translate(300, 200)" opacity="0.15">
+    <!-- Graph Icon -->
+    <rect x="0" y="30" width="6" height="20" fill="rgba(255,255,255,0.4)"/>
+    <rect x="10" y="20" width="6" height="30" fill="rgba(255,255,255,0.4)"/>
+    <rect x="20" y="10" width="6" height="40" fill="rgba(255,255,255,0.4)"/>
+    <rect x="30" y="0" width="6" height="50" fill="rgba(255,255,255,0.4)"/>
+  </g>
+  
+  <g transform="translate(500, 150)" opacity="0.1">
+    <!-- Credit Card -->
+    <rect x="0" y="0" width="60" height="40" rx="4" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="5" y="8" width="50" height="4" fill="rgba(255,255,255,0.2)"/>
+    <rect x="5" y="20" width="15" height="3" fill="rgba(255,255,255,0.2)"/>
+    <rect x="25" y="20" width="15" height="3" fill="rgba(255,255,255,0.2)"/>
+  </g>
+  
+  <!-- Central Content Area -->
+  <g transform="translate(600, 337.5)">
+    <!-- Main Circle -->
+    <circle cx="0" cy="0" r="120" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="80" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    
+    <!-- Logo Placeholder -->
+    <text x="0" y="-20" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="24" font-weight="bold">FINANCIERA</text>
+    <text x="0" y="10" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="24" font-weight="bold">INCENTIVA</text>
+    
+    <!-- Decorative Elements -->
+    <g transform="translate(-60, -60)" opacity="0.3">
+      <circle cx="0" cy="0" r="3" fill="#FF7A00"/>
+      <circle cx="15" cy="5" r="2" fill="#FF7A00"/>
+      <circle cx="5" cy="15" r="2.5" fill="#FF7A00"/>
+    </g>
+    
+    <g transform="translate(60, 60)" opacity="0.3">
+      <circle cx="0" cy="0" r="3" fill="#FF7A00"/>
+      <circle cx="-15" cy="-5" r="2" fill="#FF7A00"/>
+      <circle cx="-5" cy="-15" r="2.5" fill="#FF7A00"/>
+    </g>
+  </g>
+  
+  <!-- Floating Elements -->
+  <g opacity="0.2">
+    <!-- Peso Signs -->
+    <text x="150" y="400" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="18" font-weight="bold">$</text>
+    <text x="950" y="200" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="18" font-weight="bold">$</text>
+    <text x="1050" y="450" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="18" font-weight="bold">$</text>
+  </g>
+  
+  <!-- Bottom Text -->
+  <text x="600" y="620" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Arial, sans-serif" font-size="16">
+    Imagen personalizada próximamente
+  </text>
+  <text x="600" y="645" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">
+    Genera tu imagen usando las instrucciones en HERO_IMAGE_INSTRUCTIONS.md
+  </text>
+</svg> 

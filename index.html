@@ -11,40 +11,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Red+Hat+Display:wght@400;500;700&family=Red+Hat+Text:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- CSS Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Core CSS - Design System -->
+    <link rel="stylesheet" href="css/core/variables.css">
+    <link rel="stylesheet" href="css/components/layout.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+    <link rel="stylesheet" href="css/components/cards.css?v=2025-enterprise-services">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="css/components/hero.css">
+            <link rel="stylesheet" href="css/components/value-proposition.css?v=2025-adaptive-logos">
+        <link rel="stylesheet" href="css/components/layout.css?v=2025-logo-fix">
+        <link rel="stylesheet" href="css/components/interactive-process.css">
+        <link rel="stylesheet" href="css/components/simple-process.css">
+    
+    <!-- Legacy CSS (will gradually be replaced) -->
+    <link rel="stylesheet" href="styles.css?v=2025">
+    
+    <!-- External Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <!-- Favicon -->
-    <link rel="icon" href="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/images/logos/logo_fincentiva_original.png" type="image/png">
 </head>
 <body>
     <!-- Header -->
-    <header id="header" class="header transparent">
+    <header id="header" class="header">
         <div class="container">
             <div class="header-container">
-                <a href="index.html" class="logo-link">
-                    <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" alt="Financiera Incentiva" class="logo">
+                <a href="index.html" class="logo-link logo-adaptive">
+                    <img src="assets/images/logos/logo_fincentiva_original.png" alt="Financiera Incentiva" class="logo logo-header">
                 </a>
-                
                 <nav id="main-nav" class="nav">
-                    <a href="#creditos" class="nav-link">Soluciones de Crédito</a>
+                    <a href="index.html#creditos" class="nav-link">Soluciones de Crédito</a>
                     <a href="empresas.html" class="nav-link">Para Empresas</a>
                     <a href="colaboradores.html" class="nav-link">Para Colaboradores</a>
                     <a href="automotriz.html" class="nav-link">Crédito Automotriz</a>
                     <a href="nosotros.html" class="nav-link">Nuestra Historia</a>
                     <a href="noticias.html" class="nav-link">Noticias</a>
-                    <a href="#preguntas" class="nav-link">Ayuda</a>
-                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="index.html#preguntas" class="nav-link">Ayuda</a>
+                    <a href="index.html#contacto" class="nav-link">Contacto</a>
                 </nav>
-                
                 <div class="header-buttons">
                     <a href="https://credito.fincentiva.com.mx" class="btn btn-login" target="_blank">Solicitar Crédito</a>
                     <button id="search-btn" class="search-btn">
                         <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f673f81580854d1ab3139_search-icon-white.svg" alt="Buscar">
                     </button>
                 </div>
-
                 <button id="mobile-menu-btn" class="mobile-menu-btn">
                     <span class="hamburger-icon"></span>
                 </button>
@@ -67,188 +80,338 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Floating Particles -->
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Floating Financial Icons -->
+        <div class="hero-floating-icons">
+            <div class="floating-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <div class="floating-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+            </div>
+            <div class="floating-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                </svg>
+            </div>
+        </div>
+
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text" data-aos="fade-in" data-aos-delay="200">
+                <div class="hero-text">
                     <h1>Crédito vía nómina 100% digital que impulsa tu futuro financiero</h1>
                     <p>Brindamos soluciones financieras ágiles, seguras y transparentes a colaboradores de empresas en todo México. Cuando más lo necesitas, estamos para apoyarte.</p>
                     <div class="hero-buttons">
                         <a href="https://credito.fincentiva.com.mx" class="btn btn-primary btn-large">Solicitar Crédito</a>
-                        <a href="#nosotros" class="btn btn-secondary btn-large">Conoce Nuestra Historia</a>
                     </div>
                 </div>
-                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=400&fit=crop&crop=center" alt="Soluciones financieras Financiera Incentiva">
+                <div class="hero-image">
+                    <div class="hero-image-container">
+                        <img src="./assets/images/hero/hero-financiera-incentiva.jpg?v=2025" alt="Soluciones financieras Financiera Incentiva" id="hero-main-image">
+                        
+                        <!-- Floating Metrics Cards -->
+                        <div class="hero-metrics">
+                            <div class="metric-item">
+                                <div class="metric-icon">💳</div>
+                                <div class="metric-text">
+                                    <span class="metric-number" data-target="15000">0</span>
+                                    <span class="metric-label">Créditos Otorgados</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-icon">💰</div>
+                                <div class="metric-text">
+                                    <span class="metric-number" data-target="400">0</span>
+                                    <span class="metric-label">Millones Dispersados</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-icon">⭐</div>
+                                <div class="metric-text">
+                                    <span class="metric-number" data-target="97">0</span>
+                                    <span class="metric-label">% Satisfacción</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-icon">🏆</div>
+                                <div class="metric-text">
+                                    <span class="metric-number" data-target="15">0</span>
+                                    <span class="metric-label">Años de Experiencia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Overview -->
-    <section class="services-overview">
+    <!-- Value Proposition Section -->
+    <section class="value-proposition">
+        <!-- Brand Watermark -->
+        <div class="brand-watermark">
+            <img src="assets/images/logos/logo_fincentiva_original.png" alt="Financiera Incentiva" class="watermark-logo logo-section logo-adaptive">
+        </div>
         <div class="container">
-            <div class="services-intro">
-                <div class="service-point" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=60&h=60&fit=crop&crop=center" alt="Digital">
-                    </div>
-                    <h4>100% Digital</h4>
-                    <p>Proceso 100% digital en 3 clics con aprobación inmediata</p>
+            <!-- Professional Header -->
+            <div class="value-header" data-aos="fade-up">
+                <div class="section-eyebrow">
+                    <span class="eyebrow-icon">⭐</span>
+                    <span class="eyebrow-text">LA CONFIANZA DE +15,000 COLABORADORES</span>
                 </div>
-                <div class="service-point" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=60&h=60&fit=crop&crop=center" alt="Seguridad">
+                <h2 class="section-title">
+                    La Diferencia Que Te Da
+                    <span class="title-accent">Resultados Reales</span>
+                </h2>
+                <p class="section-description">
+                    Cuando las instituciones tradicionales te dicen "no", nosotros construimos soluciones que te permiten avanzar. 
+                    15 años de experiencia respaldan cada decisión que tomamos contigo.
+                </p>
+            </div>
+
+            <!-- Professional Value Grid -->
+            <div class="value-grid">
+                <!-- Speed & Efficiency Card -->
+                <div class="value-card value-card--speed" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 3C15.7614 3 18 5.23858 18 8C18 10.7614 15.7614 13 13 13C10.2386 13 8 10.7614 8 8C8 5.23858 10.2386 3 13 3ZM13 5C11.3431 5 10 6.34315 10 8C10 9.65685 11.3431 11 13 11C14.6569 11 16 9.65685 16 8C16 6.34315 14.6569 5 13 5ZM2 21V20C2 17.2386 4.23858 15 7 15H19C19.5523 15 20 15.4477 20 16C20 16.5523 19.5523 17 19 17H7C5.34315 17 4 18.3431 4 20V21C4 21.5523 3.55228 22 3 22C2.44772 22 2 21.5523 2 21Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">VELOCIDAD</div>
                     </div>
-                    <h4>Seguro y Confiable</h4>
-                    <p>Descuento automático vía nómina con seguridad garantizada</p>
+                    <h3 class="card-title">Respuesta en menos de 24 horas</h3>
+                    <p class="card-description">
+                        Mientras otros procesos tardan semanas, nuestro sistema especializado en nómina te da certeza inmediata.
+                    </p>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-value">< 24h</span>
+                            <span class="metric-label">Tiempo de respuesta</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">9/10</span>
+                            <span class="metric-label">Casos son aprobados</span>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="service-point" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=center" alt="Flexibilidad">
+
+                <!-- Trust & Experience Card -->
+                <div class="value-card value-card--trust" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 7C13.1 7 14 7.9 14 9S13.1 11 12 11 10 10.1 10 9 10.9 7 12 7ZM16 15H8V14C8 12.67 10.67 12 12 12S16 12.67 16 14V15Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">CONFIANZA</div>
                     </div>
-                    <h4>Acceso Flexible</h4>
-                    <p>Acceso flexible incluso con historial crediticio adverso</p>
+                    <h3 class="card-title">15 años construyendo confianza</h3>
+                    <p class="card-description">
+                        Operamos como SOFOM ENR desde 2010, con supervisión de CONDUSEF y reportes a Buró de Crédito.
+                    </p>
+                    <div class="card-certifications">
+                        <div class="institutional-header">
+                            <h4 class="institutional-title">Instituciones que nos Regulan, Califican y Reconocen:</h4>
+                        </div>
+                        <div class="institutional-logos">
+                            <div class="institutional-logo">
+                                <img src="assets/images/logos/condusef-logo.png" alt="CONDUSEF - Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros" class="logo-img">
+                                <span class="logo-name">CONDUSEF</span>
+                            </div>
+                            <div class="institutional-logo">
+                                <img src="assets/images/logos/buro-credito-logo.png" alt="Buró de Crédito - Reporte de historial crediticio" class="logo-img">
+                                <span class="logo-name">Buró de Crédito</span>
+                            </div>
+                            <div class="institutional-logo">
+                                <img src="assets/images/logos/cnbv-logo.png" alt="CNBV - Comisión Nacional Bancaria y de Valores" class="logo-img">
+                                <span class="logo-name">CNBV</span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!-- Expertise & Results Card -->
+                <div class="value-card value-card--expertise" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 6L18.29 8.29L13.41 13.17L9.41 9.17L2 16.59L3.41 18L9.41 12L13.41 16L19.71 9.71L22 12V6H16Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">RESULTADOS</div>
+                    </div>
+                    <h3 class="card-title">Especialización que da resultados</h3>
+                    <p class="card-description">
+                        Nuestro enfoque exclusivo en crédito vía nómina nos permite aprobar solicitudes que otros rechazan.
+                    </p>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-value">+400M</span>
+                            <span class="metric-label">Dispersados en 15 años</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">84%</span>
+                            <span class="metric-label">Crecimiento anual</span>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+
+                
         </div>
     </section>
 
     <!-- Main Services -->
-    <section id="creditos" class="services">
+    <section id="creditos" class="services section section-bg-gray">
         <div class="container">
-            <div class="text-center">
-                <h4>Nuestros Productos</h4>
-                <h2>En la intersección de la innovación financiera para impulsar tu crecimiento. ¿Cómo podemos ayudarte a avanzar?</h2>
+            <div class="section-header">
+                <span class="section-tagline">NUESTROS PRODUCTOS</span>
+                <h2>En la intersección de la innovación financiera para impulsar tu crecimiento</h2>
+                <p>¿Cómo podemos ayudarte a avanzar hacia tus metas financieras?</p>
             </div>
             
-            <div class="services-grid">
+            <div class="services-grid grid grid-3">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=80&h=80&fit=crop&crop=center" alt="Crédito Vía Nómina">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 15.5C15 17.4 13.4 19 11.5 19C9.6 19 8 17.4 8 15.5V9H15V15.5Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="service-header">
-                        <h5>Crédito Personal</h5>
+                        <h5>SOY EMPLEADO</h5>
                         <h3>Crédito Vía Nómina</h3>
                     </div>
-                    <p>Proceso 100% digital que te permite obtener el crédito que necesitas en solo 3 clics, con descuento automático en nómina.</p>
+                    <p class="service-description">Proceso 100% digital que te permite obtener el crédito que necesitas en solo 3 clics, con descuento automático de la nómina.</p>
                     <ul class="service-features">
                         <li>Proceso 100% digital</li>
-                        <li>Aprobación en minutos</li>
+                        <li>Aprobación en 1 día</li>
                         <li>Descuento automático</li>
-                        <li>Seguro de vida incluido</li>
+                        <li>Atención personalizada</li>
                     </ul>
-                    <a href="https://credito.fincentiva.com.mx" class="btn btn-primary">Solicitar Ahora</a>
+                    <div class="card-footer">
+                        <a href="https://credito.fincentiva.com.mx" class="btn btn-primary btn-md">Solicitar Ahora</a>
+                    </div>
                 </div>
-                
+
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">
-                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=80&h=80&fit=crop&crop=center" alt="Crédito Automotriz">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 7H18V6C18 3.79 16.21 2 14 2H10C7.79 2 6 3.79 6 6V7H5C3.9 7 3 7.9 3 9V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V9C21 7.9 20.1 7 19 7ZM10 4H14C15.1 4 16 4.9 16 6V7H8V6C8 4.9 8.9 4 10 4ZM19 20H5V9H19V20Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="service-header">
-                        <h5>Financiamiento</h5>
-                        <h3>Crédito Automotriz</h3>
+                        <h5>SOY EMPRESA</h5>
+                        <h3>Afiliación Empresarial</h3>
                     </div>
-                    <p>Financia hasta el 70% del valor de tu vehículo con las mejores condiciones del mercado y plazos flexibles.</p>
+                    <p class="service-description">Fortalece el clima laboral de tu empresa ofreciendo <strong>crédito vía nómina</strong> a tus colaboradores.</p>
                     <ul class="service-features">
-                        <li>Hasta 70% de financiamiento</li>
-                        <li>Vehículos 2016-2024</li>
-                        <li>Plazos hasta 48 meses</li>
-                        <li>Seguro incluido</li>
+                        <li>Sin riesgo para la empresa</li>
+                        <li>Mínimos requisitos</li>
+                        <li>Mejora del clima laboral</li>
+                        <li>Proceso automatizado</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Conocer Más</a>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-md">Quiero afiliar a mi empresa</a>
+                    </div>
                 </div>
                 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">
-                        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=80&h=80&fit=crop&crop=center" alt="Soluciones Empresariales">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.28 5.42 5.08 6.01L3 12V20C3 20.55 3.45 21 4 21H5C5.55 21 6 20.55 6 20V19H18V20C18 20.55 18.45 21 19 21H20C20.55 21 21 20.55 21 20V12L18.92 6.01ZM6.5 16C5.67 16 5 15.33 5 14.5S5.67 13 6.5 13 8 13.67 8 14.5 7.33 16 6.5 16ZM17.5 16C16.67 16 16 15.33 16 14.5S16.67 13 17.5 13 19 13.67 19 14.5 18.33 16 17.5 16ZM5 11L6.5 6.5H17.5L19 11H5Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="service-header">
-                        <h5>Para Empresas</h5>
-                        <h3>Soluciones Corporativas</h3>
+                        <h5>QUIERO UN VEHÍCULO</h5>
+                        <h3>Crédito Automotriz</h3>
                     </div>
-                    <p>Fortalece el clima laboral de tu empresa ofreciendo beneficios financieros a tus colaboradores sin riesgo.</p>
+                    <p class="service-description">Financia hasta el 70% del valor de tu vehículo con las mejores condiciones del mercado y plazos flexibles.</p>
                     <ul class="service-features">
-                        <li>Sin riesgo para la empresa</li>
-                        <li>Convenios empresariales</li>
-                        <li>Mejora del clima laboral</li>
-                        <li>Proceso automatizado</li>
+                        <li>Hasta 70% de financiamiento</li>
+                        <li>Vehículos 2016-2024</li>
+                        <li>Plazos hasta 48 meses</li>
+                        <li>Seguro incluído</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Solicitar Convenio</a>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-md">Conocer Más</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Statistics -->
-    <section class="statistics bg-gradient">
+    <!-- How it Works - Simple Process -->
+    <section class="simple-process section section-bg-white">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-number">+20,000</div>
-                    <div class="stat-label">Créditos Otorgados</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-number">$200MM</div>
-                    <div class="stat-label">Pesos Colocados</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-number">97%</div>
-                    <div class="stat-label">Satisfacción del Cliente</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Años de Experiencia</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process -->
-    <section id="proceso" class="process">
-        <div class="container">
-            <div class="text-center">
-                <h4>Proceso Sencillo</h4>
+            <div class="section-header">
+                <span class="section-tagline">PROCESO SENCILLO</span>
                 <h2>Así de sencillo es solicitar tu crédito</h2>
                 <p>En solo 5 pasos simples puedes obtener el financiamiento que necesitas</p>
             </div>
-            
-            <div class="process-container">
-                <svg class="process-connector" width="100%" height="100%">
-                    <path d="" stroke-dasharray="5,5" stroke-width="2" fill="none" />
-                </svg>
-                <div class="process-steps">
-                    <div class="process-step" data-aos="fade-right" data-aos-delay="100">
-                        <div class="step-number">1</div>
-                        <h3>Inicio de Sesión</h3>
-                        <p>Ingresa tu código de empresa y teléfono personal</p>
+
+            <ol class="steps-list">
+                <li class="step-item" data-step="1">
+                    <span class="step-icon"><i class="fas fa-sign-in-alt"></i></span>
+                    <div class="step-body">
+                        <h4>Inicio de Sesión</h4>
+                        <p>Ingresa tu código de empresa y teléfono personal para acceder a nuestro portal seguro.</p>
                     </div>
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-                        <div class="step-number">2</div>
-                        <h3>Simulación de Crédito</h3>
-                        <p>Selecciona el tipo de crédito y plan de pagos</p>
+                </li>
+                <li class="step-item" data-step="2">
+                    <span class="step-icon"><i class="fas fa-calculator"></i></span>
+                    <div class="step-body">
+                        <h4>Simulación de Crédito</h4>
+                        <p>Juega con los montos y plazos para encontrar el plan de pagos que mejor se ajuste a ti.</p>
                     </div>
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-                        <div class="step-number">3</div>
-                        <h3>Evaluación de Solicitud</h3>
-                        <p>Revisión de capacidad y aprobación preliminar</p>
+                </li>
+                <li class="step-item" data-step="3">
+                    <span class="step-icon"><i class="fas fa-file-signature"></i></span>
+                    <div class="step-body">
+                        <h4>Evaluación de Solicitud</h4>
+                        <p>Nuestro sistema realiza una revisión de capacidad y te da una aprobación preliminar en segundos.</p>
                     </div>
-                    <div class="process-step" data-aos="fade-up" data-aos-delay="400">
-                        <div class="step-number">4</div>
-                        <h3>Firma Digital</h3>
-                        <p>Envío de documentos y firma electrónica</p>
+                </li>
+                <li class="step-item" data-step="4">
+                    <span class="step-icon"><i class="fas fa-paper-plane"></i></span>
+                    <div class="step-body">
+                        <h4>Firma Digital</h4>
+                        <p>Envía tus documentos de forma digital y firma tu contrato electrónicamente usando tu e.firma (FIEL).</p>
                     </div>
-                    <div class="process-step" data-aos="fade-left" data-aos-delay="500">
-                        <div class="step-number">5</div>
-                        <h3>Recibe tu Dinero</h3>
-                        <p>Depósito inmediato y pagos vía nómina</p>
+                </li>
+                <li class="step-item" data-step="5">
+                    <span class="step-icon"><i class="fas fa-hand-holding-usd"></i></span>
+                    <div class="step-body">
+                        <h4>Recibe tu Dinero</h4>
+                        <p>Una vez aprobado, depositamos el dinero directamente en tu cuenta de nómina el mismo día.</p>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ol>
         </div>
     </section>
 
     <!-- About -->
-    <section id="nosotros" class="about">
+    <section id="nosotros" class="about" style="display: none !important;">
         <div class="container">
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right">
@@ -309,7 +472,7 @@
                         <div class="news-date">21 de Junio, 2025</div>
                         <h3>Nuevas Tendencias en Financiamiento Digital</h3>
                         <p>Descubre cómo la tecnología está transformando el acceso al crédito en México...</p>
-                        <a href="#" class="news-link">Leer más</a>
+                        <a href="articulo-tendencias-financieras.html" class="news-link">Leer más</a>
                     </div>
                 </article>
                 
@@ -321,7 +484,7 @@
                         <div class="news-date">18 de Junio, 2025</div>
                         <h3>Consejos para Mejorar tu Historial Crediticio</h3>
                         <p>Aprende estrategias efectivas para construir y mantener un buen historial crediticio...</p>
-                        <a href="#" class="news-link">Leer más</a>
+                        <a href="articulo-mejorar-historial.html" class="news-link">Leer más</a>
                     </div>
                 </article>
                 
@@ -333,7 +496,7 @@
                         <div class="news-date">15 de Junio, 2025</div>
                         <h3>Beneficios del Crédito Vía Nómina para Empresas</h3>
                         <p>Conoce cómo implementar programas de crédito puede mejorar el clima laboral...</p>
-                        <a href="#" class="news-link">Leer más</a>
+                        <a href="articulo-beneficios-nomina.html" class="news-link">Leer más</a>
                     </div>
                 </article>
             </div>
@@ -343,19 +506,23 @@
     <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
-            <div class="testimonials-content">
-                <div class="testimonials-image" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=500&h=400&fit=crop&crop=center" alt="Cliente satisfecho">
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excelente servicio, muy rápido y confiable. Lo recomiendo ampliamente."</p>
+                    <div class="author">- Juan Pérez</div>
                 </div>
-                <div class="testimonials-text" data-aos="fade-left">
-                    <div class="quote-icon">"</div>
-                    <div class="testimonial-item active">
-                        <p>Financiera Incentiva me ayudó cuando más lo necesitaba. El proceso fue súper rápido y sencillo. En menos de una hora ya tenía mi crédito aprobado.</p>
-                        <div class="testimonial-author">
-                            <strong>María González</strong>
-                            <span>Cliente Crédito Nómina</span>
-                        </div>
-                    </div>
+                
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stars">★★★★★</div>
+                    <p>"El proceso fue muy sencillo y el personal muy amable. ¡Gracias!"</p>
+                    <div class="author">- María González</div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stars">★★★★★</div>
+                    <p>"La mejor opción para un crédito de nómina, sin duda."</p>
+                    <div class="author">- Carlos Rodríguez</div>
                 </div>
             </div>
         </div>
@@ -485,7 +652,7 @@
     </section>
 
     <!-- Security -->
-    <section class="security">
+    <section class="security" style="display: none !important;">
         <div class="container">
             <div class="text-center">
                 <h4>Seguro y Confiable</h4>
@@ -515,7 +682,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" alt="Financiera Incentiva" class="footer-logo">
+                    <img src="assets/images/logos/logo_fincentiva_letra_blanca_flecha_verde.png" alt="Financiera Incentiva - SOFOM ENR" class="footer-logo logo-footer logo-adaptive">
                     <p>Financiera Incentiva, S.A.P.I. de C.V., SOFOM E.N.R.</p>
                     <p>San Antonio 2340, Col. Lomas de San Francisco<br>Monterrey, N.L., C.P. 64710</p>
                     <p><strong>Tel: +52 81 8218 0477</strong></p>
@@ -565,12 +732,29 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - Modern ES6 Modules -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="main.js?v=1.1"></script>
+    
+    <!-- Initialize AOS immediately -->
     <script>
-        AOS.init({ once: true, disable: 'mobile' });
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 500,
+                once: true,
+                offset: 50
+            });
+        }
+    </script>
+    
+    <!-- Load modules individually to avoid conflicts -->
+    <script type="module" src="js/app.js"></script>
+    
+    <!-- Fallback initialization script -->
+    <script nomodule>
+        console.warn('This browser does not support ES6 modules. Please use a modern browser for the best experience.');
+        // Load legacy main.js for older browsers
+        document.write('<script src="main.js?v=1.1"><\/script>');
     </script>
     <a href="https://wa.me/528182180477" class="whatsapp-float" target="_blank">
         <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62547b79659a7a665ce94b29_whatsapp-icon.svg" alt="WhatsApp">

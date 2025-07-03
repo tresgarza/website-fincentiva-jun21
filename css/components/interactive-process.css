@@ -1,0 +1,165 @@
+/* ===================================
+   INTERACTIVE PROCESS TIMELINE SECTION
+   =================================== */
+
+.how-it-works {
+    padding: var(--space-16) 0;
+    background-color: var(--color-neutral-0);
+    position: relative;
+}
+
+.how-it-works .section-header {
+    margin-bottom: var(--space-12);
+}
+
+.how-it-works .section-header .section-tagline {
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-600);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: var(--space-4);
+}
+
+.how-it-works .section-header h2 {
+    font-size: var(--font-size-4xl);
+    color: var(--color-neutral-800);
+}
+
+.how-it-works .section-header p {
+    font-size: var(--font-size-lg);
+    color: var(--color-neutral-600);
+    max-width: 48rem;
+    margin: var(--space-2) auto 0;
+}
+
+.process-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--space-12);
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.process-timeline {
+    position: sticky;
+    top: 150px;
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-line {
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-neutral-200);
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.timeline-line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%; /* This will be animated by JS */
+    background-color: var(--color-primary-500);
+    transition: height var(--duration-300) var(--ease-out);
+}
+
+.timeline-step {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-dot {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-neutral-300);
+    color: var(--color-neutral-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    transition: all var(--duration-300) var(--ease-out);
+    border: 3px solid var(--color-neutral-0);
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-step.visited .timeline-dot {
+    background-color: var(--color-primary-500);
+    color: var(--color-neutral-0);
+    box-shadow: 0 0 0 2px var(--color-primary-200);
+}
+
+.timeline-step.active .timeline-dot {
+    background-color: var(--color-primary-600);
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px var(--color-primary-100), var(--shadow-lg);
+}
+
+.process-content {
+    padding-top: var(--space-8);
+    padding-bottom: 25vh;
+}
+
+.process-step-content {
+    background: var(--color-neutral-0);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-bottom: var(--space-40);
+    scroll-margin-top: 120px;
+    opacity: 0.3;
+    transition: all var(--duration-500) var(--ease-out);
+}
+
+.process-step-content.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    border-color: var(--color-primary-500);
+    box-shadow: 0 10px 30px rgba(57, 168, 96, 0.1), var(--shadow-lg);
+}
+
+.process-step-content h4 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-neutral-800);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-bold);
+}
+
+.process-step-content h4 span {
+    color: var(--color-primary-500);
+    margin-right: var(--space-2);
+}
+
+.process-step-content p {
+    color: var(--color-neutral-600);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
+}
+
+@media (max-width: 768px) {
+    .process-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .process-timeline {
+        display: none; /* Hide timeline on mobile for simplicity */
+    }
+    .process-step-content {
+        opacity: 1;
+        transform: none;
+        margin-bottom: 2rem;
+    }
+} 

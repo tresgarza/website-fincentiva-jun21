@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias y Educación Financiera – Financiera Incentiva</title>
-    <meta name="description" content="Manténgase informado con las últimas noticias, consejos y tendencias en finanzas personales y crédito.">
+    <title>Noticias y Educación Financiera - Financiera Incentiva</title>
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/core/variables.css">
+    <link rel="stylesheet" href="css/components/layout.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/components/news.css?v=1.2">
+    
+    <!-- Legacy & External -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="icon" href="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="assets/images/logos/logo_fincentiva_original.png" type="image/png">
 </head>
 <body>
-    <!-- Header -->
+
     <header id="header" class="header">
         <div class="container">
             <div class="header-container">
-                <a href="index.html" class="logo-link">
-                    <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" alt="Financiera Incentiva" class="logo">
+                <a href="index.html" class="logo-link logo-adaptive">
+                    <img src="assets/images/logos/logo_fincentiva_original.png" alt="Financiera Incentiva" class="logo logo-header">
                 </a>
                 <nav id="main-nav" class="nav">
                     <a href="index.html#creditos" class="nav-link">Soluciones de Crédito</a>
@@ -23,15 +32,12 @@
                     <a href="colaboradores.html" class="nav-link">Para Colaboradores</a>
                     <a href="automotriz.html" class="nav-link">Crédito Automotriz</a>
                     <a href="nosotros.html" class="nav-link">Nuestra Historia</a>
-                    <a href="noticias.html" class="nav-link active">Noticias</a>
+                    <a href="noticias.html" class="nav-link nav-link-active">Noticias</a>
                     <a href="index.html#preguntas" class="nav-link">Ayuda</a>
                     <a href="index.html#contacto" class="nav-link">Contacto</a>
                 </nav>
                 <div class="header-buttons">
                     <a href="https://credito.fincentiva.com.mx" class="btn btn-login" target="_blank">Solicitar Crédito</a>
-                    <button id="search-btn" class="search-btn">
-                        <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f673f81580854d1ab3139_search-icon-white.svg" alt="Buscar">
-                    </button>
                 </div>
                 <button id="mobile-menu-btn" class="mobile-menu-btn">
                     <span class="hamburger-icon"></span>
@@ -40,100 +46,82 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation Panel -->
-    <div id="mobile-nav-panel" class="mobile-nav-panel">
-        <a href="index.html#creditos" class="mobile-nav-link">Soluciones de Crédito</a>
-        <a href="empresas.html" class="mobile-nav-link">Para Empresas</a>
-        <a href="colaboradores.html" class="mobile-nav-link">Para Colaboradores</a>
-        <a href="automotriz.html" class="mobile-nav-link">Crédito Automotriz</a>
-        <a href="nosotros.html" class="mobile-nav-link">Nuestra Historia</a>
-        <a href="noticias.html" class="mobile-nav-link active">Noticias</a>
-        <a href="index.html#preguntas" class="mobile-nav-link">Ayuda</a>
-        <a href="index.html#contacto" class="mobile-nav-link">Contacto</a>
-        <a href="https://credito.fincentiva.com.mx" class="btn btn-primary mobile-nav-btn" target="_blank">Solicitar Crédito</a>
-    </div>
-
     <main>
-        <!-- Page Header -->
-        <section class="page-header">
-            <div class="container" data-aos="fade-in">
-                <h1>Noticias y Educación Financiera</h1>
-                <p>Recursos para tomar el control de su futuro financiero.</p>
-            </div>
-        </section>
-
-        <!-- News Grid Section -->
-        <section class="news-page-section">
+        <section class="news-header">
             <div class="container">
-                <div class="news-grid-full">
-                    <!-- Example Article 1 -->
-                    <article class="news-card" data-aos="fade-up">
-                        <div class="news-image">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center" alt="Artículo 1">
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date">21 de Junio, 2025</div>
-                            <h3>Nuevas Tendencias en Financiamiento Digital</h3>
-                            <p>Descubre cómo la tecnología está transformando el acceso al crédito en México...</p>
-                            <a href="#" class="news-link">Leer más</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Example Article 2 -->
-                    <article class="news-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="news-image">
-                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=200&fit=crop&crop=center" alt="Artículo 2">
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date">18 de Junio, 2025</div>
-                            <h3>Consejos para Mejorar tu Historial Crediticio</h3>
-                            <p>Aprende estrategias efectivas para construir y mantener un buen historial crediticio...</p>
-                            <a href="#" class="news-link">Leer más</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Example Article 3 -->
-                    <article class="news-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="news-image">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop&crop=center" alt="Artículo 3">
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date">15 de Junio, 2025</div>
-                            <h3>Beneficios del Crédito Vía Nómina para Empresas</h3>
-                            <p>Conoce cómo implementar programas de crédito puede mejorar el clima laboral...</p>
-                            <a href="#" class="news-link">Leer más</a>
-                        </div>
-                    </article>
-                    <!-- Add more articles as needed -->
-                </div>
+                <h1>Noticias y Educación Financiera</h1>
+                <p>Recursos para tomar el control de tu futuro financiero.</p>
             </div>
         </section>
 
+        <section class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+            <div class="news-grid">
+                <!-- Article 1 -->
+                <article class="news-card" data-aos="fade-up">
+                    <a href="articulo-tendencias-financieras.html" class="news-card-link-wrapper">
+                        <div class="news-card-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=220&fit=crop&crop=center" alt="Gráficas de finanzas en una pantalla">
+                        </div>
+                        <div class="news-card-content">
+                            <p class="news-card-date">21 de Junio, 2025</p>
+                            <h3 class="news-card-title">Nuevas Tendencias en Financiamiento Digital</h3>
+                            <p class="news-card-excerpt">La tecnología está redefiniendo el crédito. Explora las innovaciones que hacen los préstamos más rápidos, justos y accesibles.</p>
+                            <span class="news-card-link">Leer más &rarr;</span>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="news-card" data-aos="fade-up" data-aos-delay="100">
+                    <a href="articulo-mejorar-historial.html" class="news-card-link-wrapper">
+                        <div class="news-card-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=220&fit=crop&crop=center" alt="Persona usando una calculadora y revisando documentos">
+                        </div>
+                        <div class="news-card-content">
+                            <p class="news-card-date">18 de Junio, 2025</p>
+                            <h3 class="news-card-title">Consejos para Mejorar tu Historial Crediticio</h3>
+                            <p class="news-card-excerpt">Un buen historial es tu mejor carta de presentación financiera. Aprende estrategias efectivas para construirlo y mantenerlo saludable.</p>
+                            <span class="news-card-link">Leer más &rarr;</span>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="news-card" data-aos="fade-up" data-aos-delay="200">
+                    <a href="articulo-beneficios-nomina.html" class="news-card-link-wrapper">
+                        <div class="news-card-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=220&fit=crop&crop=center" alt="Hombre sonriendo, representando a un empleado beneficiado">
+                        </div>
+                        <div class="news-card-content">
+                            <p class="news-card-date">15 de Junio, 2025</p>
+                            <h3 class="news-card-title">Beneficios del Crédito Vía Nómina para Empresas</h3>
+                            <p class="news-card-excerpt">Descubre cómo este beneficio mejora el clima laboral, reduce la rotación y aumenta la productividad sin costo para tu empresa.</p>
+                            <span class="news-card-link">Leer más &rarr;</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer id="contacto" class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/62295556276a7709335f631f_fincentiva-isotipo-color.svg" alt="Financiera Incentiva" class="footer-logo">
+                    <img src="assets/images/logos/logo_fincentiva_letra_blanca_flecha_verde.png" alt="Financiera Incentiva - SOFOM ENR" class="footer-logo logo-footer logo-adaptive">
                     <p>Financiera Incentiva, S.A.P.I. de C.V., SOFOM E.N.R.</p>
-                    <p>San Antonio 2340, Col. Lomas de San Francisco<br>Monterrey, N.L., C.P. 64710</p>
-                    <p><strong>Tel: +52 81 8218 0477</strong></p>
                 </div>
                 <div class="footer-section">
                     <h5>Productos</h5>
                     <ul class="footer-links">
                         <li><a href="index.html#creditos">Crédito Vía Nómina</a></li>
                         <li><a href="automotriz.html">Crédito Automotriz</a></li>
-                        <li><a href="empresas.html">Soluciones Empresariales</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h5>Empresa</h5>
                     <ul class="footer-links">
                         <li><a href="nosotros.html">Nuestra Historia</a></li>
-                        <li><a href="index.html#contacto">Contacto</a></li>
                         <li><a href="noticias.html">Noticias</a></li>
                     </ul>
                 </div>
@@ -141,27 +129,21 @@
                     <h5>Ayuda</h5>
                     <ul class="footer-links">
                         <li><a href="index.html#preguntas">Preguntas Frecuentes</a></li>
-                        <li><a href="mailto:une@fincentiva.com.mx">UNE: une@fincentiva.com.mx</a></li>
+                        <li><a href="mailto:une@fincentiva.com.mx">UNE</a></li>
                     </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-legal">
-                    <p>© 2025 Financiera Incentiva. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a></p>
-                </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f6789815808169aab3139_twitter-icon-white.svg" alt="Twitter"></a>
-                    <a href="#" class="social-link"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f6788a1de8d234658d543_facebook-icon-white.svg" alt="Facebook"></a>
-                    <a href="#" class="social-link"><img src="https://uploads-ssl.webflow.com/622954199446d37651a0179d/622f6788863f91572d4999f7_linkedin-icon-white.svg" alt="LinkedIn"></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="main.js"></script>
-    <script>
-        AOS.init({ once: true });
+    <script type="module" src="js/app.js"></script>
+     <script>
+        AOS.init({
+            once: true,
+            duration: 600,
+            offset: 50,
+        });
     </script>
 </body>
 </html> 

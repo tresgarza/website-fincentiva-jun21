@@ -313,12 +313,7 @@ p {
     line-height: 1.1;
 }
 
-.hero-text p {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    opacity: 0.95;
-    line-height: 1.6;
-}
+/* Hero text paragraph styles moved to css/components/hero.css for better modularity */
 
 .hero-buttons {
     display: flex;
@@ -812,11 +807,6 @@ p {
     padding: 1rem 0;
 }
 
-.logo {
-    height: 50px;
-    width: auto;
-}
-
 .nav {
     display: flex;
     gap: 2rem;
@@ -910,11 +900,7 @@ p {
     line-height: 1.1;
 }
 
-.hero-text p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
+/* Hero text paragraph styles moved to css/components/hero.css for better modularity */
 
 .hero-buttons {
     display: flex;
@@ -1608,6 +1594,8 @@ p {
     position: relative;
     overflow: hidden;
 }
+
+.timeline-item[data-aos="fade-up"].aos-animate {
     opacity: 1;
     transform: translateY(0);
 }
