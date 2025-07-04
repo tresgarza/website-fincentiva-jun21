@@ -115,23 +115,8 @@ class NewsPageUpdater {
   }
 
   replaceArticleCards(content, newCardsHtml) {
-    // Find the news grid section and replace the content
-    const gridStartPattern = /(<div class="news-grid"[^>]*>)/;
-    const gridEndPattern = /(<\/div>\s*<\/div>\s*<\/section>)/;
-    
-    const startMatch = content.match(gridStartPattern);
-    const endMatch = content.match(gridEndPattern);
-    
-    if (startMatch && endMatch) {
-      const beforeGrid = content.substring(0, startMatch.index + startMatch[0].length);
-      const afterGrid = content.substring(content.indexOf(endMatch[0]));
-      
-      return beforeGrid + '\n' + newCardsHtml + '\n                ' + afterGrid;
-    }
-    
-    // Fallback: if pattern not found, append at the end of main content
-    console.warn('⚠️ No se encontró el patrón de grid, usando método de respaldo');
-    return content;
+    const placeholder = '<!-- ARTICLES_JSON_REPLACE -->';
+    return content.replace(placeholder, newCardsHtml);
   }
 }
 

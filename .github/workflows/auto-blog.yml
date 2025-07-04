@@ -70,14 +70,18 @@ jobs:
         
         # Create commit message with article title
         ARTICLE_TITLE=$(node -e "
-          const fs = require('fs');
+          const fs = require('fs-extra');
           const path = require('path');
-          const articles = fs.readJsonSync(path.join(__dirname, 'articles', 'index.json'));
-          const newestArticle = articles[0];
-          if (newestArticle && newestArticle.title) {
-            console.log(newestArticle.title);
-          } else {
-            console.log('Nuevo artículo generado');
+          try {
+            const articles = fs.readJsonSync('articles/index.json');
+            const newestArticle = articles[0];
+            if (newestArticle && newestArticle.title) {
+              console.log(newestArticle.title);
+            } else {
+              console.log('Nuevo artículo generado');
+            }
+          } catch (e) {
+            console.log('Nuevo artículo (índice no encontrado)');
           }
         ")
         
