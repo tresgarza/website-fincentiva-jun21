@@ -12,7 +12,6 @@ yarn-error.log*
 .env.production.local
 
 # Generated files
-articles/
 *.log
 
 # OS files
