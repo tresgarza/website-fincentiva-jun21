@@ -1,0 +1,24 @@
+{
+  "name": "financiera-incentiva-website",
+  "version": "1.0.0",
+  "description": "Automated blog generation system for Financiera Incentiva",
+  "scripts": {
+    "generate-blog": "node scripts/generate-blog.js",
+    "test-blog": "node scripts/test-generation.js",
+    "update-news": "node scripts/update-news-page.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "openai": "^4.24.0",
+    "axios": "^1.6.2",
+    "fs-extra": "^11.2.0",
+    "date-fns": "^3.0.6",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "keywords": ["fintech", "blog", "automation", "ai"],
+  "author": "Financiera Incentiva",
+  "license": "MIT"
+} 
