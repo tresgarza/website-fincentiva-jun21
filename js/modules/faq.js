@@ -3,102 +3,108 @@
  * Following Clean Code JavaScript principles
  */
 
+/**
+ * FAQManager
+ * Gestiona la interactividad de la sección de Preguntas Frecuentes,
+ * incluyendo el cambio de pestañas y el comportamiento del acordeón.
+ */
 class FAQManager {
   constructor() {
-    this.faqItems = document.querySelectorAll('.faq-item');
-    this.faqTabs = document.querySelectorAll('.faq-tab');
-    this.faqPanels = document.querySelectorAll('.faq-panel');
-    
-    this.init();
+    this.faqContainer = document.querySelector('.faq-container');
+    if (!this.faqContainer) return;
+
+    this.tabs = this.faqContainer.querySelectorAll('.faq-tab');
+    this.panels = this.faqContainer.querySelectorAll('.faq-panel');
+    this.questions = this.faqContainer.querySelectorAll('.faq-question');
+
+    this.assignAccessibilityAttributes();
+    this.initTabs();
+    this.initAccordion();
   }
 
-  init() {
-    this.setupFAQItems();
-    this.setupFAQTabs();
+  /* -------------------------- Tabs logic -------------------------- */
+  initTabs() {
+    this.tabs.forEach((tab) => {
+      tab.addEventListener('click', () => this.activateTab(tab));
+    });
   }
 
-  setupFAQItems() {
-    this.faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      if (!question) return;
+  activateTab(clickedTab) {
+    // Deactivate all
+    this.tabs.forEach((tab) => tab.classList.remove('active'));
+    this.panels.forEach((panel) => panel.classList.remove('active'));
 
-      question.addEventListener('click', () => {
-        this.handleFAQItemClick(item);
+    // Activate selected
+    clickedTab.classList.add('active');
+    const targetPanel = this.faqContainer.querySelector(`#${clickedTab.dataset.tab}`);
+    if (targetPanel) targetPanel.classList.add('active');
+  }
+
+  /* ----------------------- Accordion logic ----------------------- */
+  initAccordion() {
+    this.questions.forEach((question) => {
+      question.addEventListener('click', (e) => {
+        const btn = e.currentTarget;
+        const item = btn.parentElement;
+        const answer = btn.nextElementSibling;
+
+        if (!answer) return;
+
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        if (isOpen) {
+          this.closeItem(item, btn, answer);
+        } else {
+          // Close any other open item in this panel first
+          this.closeAllItems(item.parentElement);
+          this.openItem(item, btn, answer);
+        }
       });
     });
   }
 
-  setupFAQTabs() {
-    this.faqTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        this.handleTabClick(tab);
-      });
-    });
-  }
-
-  handleFAQItemClick(clickedItem) {
-    const isActive = clickedItem.classList.contains('active');
-    
-    // Close all FAQ items
-    this.closeAllFAQItems();
-    
-    // Open clicked item if it wasn't active
-    if (!isActive) {
-      this.openFAQItem(clickedItem);
-    }
-  }
-
-  handleTabClick(clickedTab) {
-    const tabId = clickedTab.dataset.tab;
-    if (!tabId) return;
-
-    this.setActiveTab(clickedTab);
-    this.showPanel(tabId);
-  }
-
-  closeAllFAQItems() {
-    this.faqItems.forEach(item => {
-      item.classList.remove('active');
-    });
-  }
-
-  openFAQItem(item) {
+  openItem(item, btn, answer) {
     item.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+    answer.removeAttribute('hidden');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
   }
 
-  setActiveTab(activeTab) {
-    this.faqTabs.forEach(tab => {
-      tab.classList.remove('active');
+  closeItem(item, btn, answer) {
+    item.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+    answer.setAttribute('hidden', '');
+    answer.style.maxHeight = null;
+  }
+
+  closeAllItems(panel) {
+    const items = panel.querySelectorAll('.faq-item.active');
+    items.forEach((item) => {
+      const btn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      if (btn && answer) this.closeItem(item, btn, answer);
     });
-    activeTab.classList.add('active');
   }
 
-  showPanel(panelId) {
-    // Hide all panels
-    this.faqPanels.forEach(panel => {
-      panel.classList.remove('active');
+  /* -------------- Accessibility attribute assignment ------------- */
+  assignAccessibilityAttributes() {
+    this.questions.forEach((btn, index) => {
+      const answer = btn.nextElementSibling;
+      if (!answer) return;
+
+      // Unique IDs for association
+      const btnId = `faq-question-${index + 1}`;
+      const answerId = `faq-answer-${index + 1}`;
+
+      btn.setAttribute('id', btnId);
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', answerId);
+
+      answer.setAttribute('id', answerId);
+      answer.setAttribute('role', 'region');
+      answer.setAttribute('aria-labelledby', btnId);
+      answer.setAttribute('hidden', '');
     });
-
-    // Show target panel
-    const targetPanel = document.getElementById(panelId);
-    if (targetPanel) {
-      targetPanel.classList.add('active');
-    }
-  }
-
-  // Public method to programmatically open an FAQ item
-  openFAQByIndex(index) {
-    if (index >= 0 && index < this.faqItems.length) {
-      this.handleFAQItemClick(this.faqItems[index]);
-    }
-  }
-
-  // Public method to switch to a specific tab
-  switchToTab(tabId) {
-    const targetTab = document.querySelector(`[data-tab="${tabId}"]`);
-    if (targetTab) {
-      this.handleTabClick(targetTab);
-    }
   }
 }
 

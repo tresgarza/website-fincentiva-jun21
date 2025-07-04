@@ -19,10 +19,13 @@
     
     <!-- Component CSS -->
     <link rel="stylesheet" href="css/components/hero.css">
-            <link rel="stylesheet" href="css/components/value-proposition.css?v=2025-adaptive-logos">
-        <link rel="stylesheet" href="css/components/layout.css?v=2025-logo-fix">
-        <link rel="stylesheet" href="css/components/interactive-process.css">
-        <link rel="stylesheet" href="css/components/simple-process.css">
+    <link rel="stylesheet" href="css/components/value-proposition.css?v=2025-adaptive-logos">
+    <link rel="stylesheet" href="css/components/layout.css?v=2025-logo-fix">
+    <link rel="stylesheet" href="css/components/interactive-process.css">
+    <link rel="stylesheet" href="css/components/simple-process.css">
+    <link rel="stylesheet" href="css/components/testimonials.css">
+    <link rel="stylesheet" href="css/components/partners.css">
+    <link rel="stylesheet" href="css/components/faq.css?v=2025-july3-clean-design">
     
     <!-- Legacy CSS (will gradually be replaced) -->
     <link rel="stylesheet" href="styles.css?v=2025">
@@ -428,27 +431,18 @@
         </div>
     </section>
 
-    <!-- Partners -->
-    <section id="empresas" class="partners">
+    <!-- Partners Section -->
+    <section id="empresas" class="partners-section">
         <div class="container">
-            <div class="text-center">
-                <h4>Nuestros Socios</h4>
+            <div class="section-header">
+                <span class="section-tagline">NUESTROS SOCIOS</span>
                 <h2>Ayudamos a empresas a transformar el bienestar financiero de sus colaboradores</h2>
-                <p>Nuestras soluciones flexibles de crédito y financiamiento superan las capacidades bancarias tradicionales, eliminando obstáculos críticos para la innovación financiera.</p>
+                <p>Nuestras soluciones flexibles de crédito y financiamiento superan las capacidades bancarias tradicionales.</p>
             </div>
-            
-            <div class="partners-scroller">
-                <div class="partners-grid">
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop&crop=center" alt="Socio 1"></div>
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=200&h=100&fit=crop&crop=center" alt="Socio 2"></div>
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=200&h=100&fit=crop&crop=center" alt="Socio 3"></div>
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=200&h=100&fit=crop&crop=center" alt="Socio 4"></div>
-                    <!-- Duplicate for infinite effect -->
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop&crop=center" alt="Socio 1"></div>
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=200&h=100&fit=crop&crop=center" alt="Socio 2"></div>
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=200&h=100&fit=crop&crop=center" alt="Socio 3"></div>
-                    <div class="partner-logo"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=200&h=100&fit=crop&crop=center" alt="Socio 4"></div>
-                </div>
+        </div>
+        <div class="partners-scroller">
+            <div class="partners-track">
+                <!-- Los logos se insertarán aquí dinámicamente -->
             </div>
         </div>
     </section>
@@ -503,142 +497,397 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
         <div class="container">
-            <div class="testimonial-grid">
-                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="stars">★★★★★</div>
-                    <p>"Excelente servicio, muy rápido y confiable. Lo recomiendo ampliamente."</p>
-                    <div class="author">- Juan Pérez</div>
+            <div class="section-header">
+                <h2>Lo que nuestros clientes dicen</h2>
+                <p>La confianza y satisfacción de miles de colaboradores nos respaldan.</p>
+            </div>
+        </div>
+        <div class="testimonial-scroller">
+            <div class="testimonial-track">
+                <!-- Testimonial Set 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">El proceso fue increíblemente rápido y todo digital. En menos de 24 horas ya tenía el dinero en mi cuenta. ¡Justo lo que necesitaba!</p>
+                    <p class="testimonial-author">Carlos Mendoza</p>
+                    <p class="author-title">Colaborador, Industria Manufacturera</p>
                 </div>
-                
-                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="stars">★★★★★</div>
-                    <p>"El proceso fue muy sencillo y el personal muy amable. ¡Gracias!"</p>
-                    <div class="author">- María González</div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">Tenía una emergencia médica y el banco me ponía mil trabas. Con Financiera Incentiva todo fue muy humano y comprensivo. Gracias por el apoyo.</p>
+                    <p class="testimonial-author">Laura Jiménez</p>
+                    <p class="author-title">Enfermera, Sector Salud</p>
                 </div>
-                
-                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="stars">★★★★★</div>
-                    <p>"La mejor opción para un crédito de nómina, sin duda."</p>
-                    <div class="author">- Carlos Rodríguez</div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">Excelente servicio al cliente. Me guiaron paso a paso y resolvieron todas mis dudas. Se nota que les importa la gente.</p>
+                    <p class="testimonial-author">Javier Hernández</p>
+                    <p class="author-title">Gerente de Logística</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">Poder consolidar mis deudas con este crédito me quitó un peso de encima. Las condiciones son justas y los descuentos por nómina son muy cómodos.</p>
+                    <p class="testimonial-author">Sofía Vargas</p>
+                    <p class="author-title">Docente, Sector Educativo</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">La plataforma es súper fácil de usar. Hice mi simulación y solicitud desde el celular en unos minutos. 100% recomendado.</p>
+                    <p class="testimonial-author">Miguel Ángel Ríos</p>
+                    <p class="author-title">Desarrollador de Software</p>
+                </div>
+                <!-- Testimonial Set 2 (Duplicate for infinite scroll) -->
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">El proceso fue increíblemente rápido y todo digital. En menos de 24 horas ya tenía el dinero en mi cuenta. ¡Justo lo que necesitaba!</p>
+                    <p class="testimonial-author">Carlos Mendoza</p>
+                    <p class="author-title">Colaborador, Industria Manufacturera</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">Tenía una emergencia médica y el banco me ponía mil trabas. Con Financiera Incentiva todo fue muy humano y comprensivo. Gracias por el apoyo.</p>
+                    <p class="testimonial-author">Laura Jiménez</p>
+                    <p class="author-title">Enfermera, Sector Salud</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">Excelente servicio al cliente. Me guiaron paso a paso y resolvieron todas mis dudas. Se nota que les importa la gente.</p>
+                    <p class="testimonial-author">Javier Hernández</p>
+                    <p class="author-title">Gerente de Logística</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">Poder consolidar mis deudas con este crédito me quitó un peso de encima. Las condiciones son justas y los descuentos por nómina son muy cómodos.</p>
+                    <p class="testimonial-author">Sofía Vargas</p>
+                    <p class="author-title">Docente, Sector Educativo</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
+                    <p class="testimonial-text">La plataforma es súper fácil de usar. Hice mi simulación y solicitud desde el celular en unos minutos. 100% recomendado.</p>
+                    <p class="testimonial-author">Miguel Ángel Ríos</p>
+                    <p class="author-title">Desarrollador de Software</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="preguntas" class="faq">
-        <div class="container">
-            <div class="text-center">
-                <h4>Preguntas Frecuentes</h4>
-                <h2>Nuestros expertos responden tus dudas.</h2>
-            </div>
-            
+  <!-- FAQ Section -->
+<section id="preguntas" class="faq-section">
+    <div class="container">
+        <div class="section-header">
+            <h4>Preguntas Frecuentes</h4>
+            <h2>Resolvemos tus dudas con transparencia y claridad</h2>
+            <p>Nuestro equipo de expertos ha compilado las respuestas a las consultas más importantes sobre nuestros servicios financieros.</p>
+        </div>
+        
+        <div class="faq-container">
             <div class="faq-tabs">
                 <button class="faq-tab active" data-tab="nomina">Crédito Nómina</button>
-                <button class="faq-tab" data-tab="empresas">Para Empresas</button>
+                <button class="faq-tab" data-tab="faq-empresas">Para Empresas</button>
                 <button class="faq-tab" data-tab="automotriz">Crédito Automotriz</button>
             </div>
             
             <div id="nomina" class="faq-panel active">
-                <!-- FAQ Items for Crédito Nómina -->
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué es un crédito vía nómina?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Un préstamo personal cuya cuota se descuenta automáticamente de tu sueldo a través de tu empresa, evitando retrasos y cargos extra.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Qué es un crédito vía nómina y cómo funciona?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Es un préstamo personal exclusivo para colaboradores activos de empresas afiliadas a Fincentiva. La mensualidad se descuenta directamente de tu nómina mediante un mandato irrevocable firmado por ti y respaldado por convenio con tu empresa. Así, evitas retrasos, olvidos y todo el proceso es ágil y seguro para ti.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cuáles son los requisitos básicos?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Ser colaborador de una empresa afiliada, contar con antigüedad laboral mínima (varía por convenio) y presentar identificación, comprobante de ingresos y domicilio.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cuáles son los requisitos para solicitar un crédito de nómina?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            • Ser empleado activo de una empresa afiliada<br>
+                            • Antigüedad mínima de 1 año en tu empleo actual<br>
+                            • Identificación oficial vigente<br>
+                            • Comprobantes de ingresos (recibos de nómina) del último mes<br>
+                            • Comprobante de domicilio reciente
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cómo lo solicito?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>1) Ingresa a credito.fincentiva.com.mx con el código de tu empresa; 2) Simula tu plan en segundos; 3) Envía documentos en línea y firma digital. Todo el flujo es 100 % digital.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cuánto puedo solicitar y cuáles son los plazos?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            El monto máximo y plazo dependen del convenio firmado entre Fincentiva y tu empresa, y tu capacidad de pago. Normalmente puedes solicitar desde $3,000 hasta $50,000 pesos, a plazos de 6 a 12 meses, procurando que el descuento no exceda el 25% de tu ingreso neto. Consulta tu simulador o asesor para saber el tope específico en tu empresa.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué pasa si cambio de trabajo o me liquidan?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Debes avisarnos inmediatamente para recibir nuevas instrucciones de pago directo, garantizando que sigas al corriente sin afectar tu historial.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Qué pasa si falto al trabajo, tengo incapacidad, licencia o mi sueldo se suspende?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Debes avisar de inmediato a Fincentiva para recibir las instrucciones sobre cómo cubrir tus pagos durante ese periodo. Si no recibes sueldo (por incapacidad o licencia sin goce), podrás realizar pagos directamente vía transferencia. Así evitas intereses y mantienes tu crédito al corriente.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Existe penalización por pagos tardíos?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Incumplir genera intereses moratorios y, en su caso, gastos de cobranza. Por ello es clave respetar las fechas de corte indicadas en tu contrato y conservar tus comprobantes.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Qué sucede si cambio de trabajo, me liquidan o renuncio?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Es fundamental que notifiques a Fincentiva inmediatamente cualquier cambio laboral. Recibirás opciones para continuar con tus pagos y proteger tu historial. Si recibes finiquito o liquidación, puedes usar una parte para saldar tu adeudo si así lo prefieres.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cómo resuelvo dudas sobre cargos o estados de cuenta?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Puedes presentar aclaraciones en la Unidad Especializada de Atención a Usuarios (UNE) dentro de los plazos señalados; recibirás respuesta documentada en máximo 45 días.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cuánto tiempo tarda la aprobación y el depósito?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Una vez enviada tu solicitud completa y validada por RH, la aprobación toma menos de 24 horas hábiles. Tras la firma digital del contrato, el depósito normalmente se realiza en tu cuenta el mismo día.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Por qué es seguro y transparente?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>La firma es electrónica, no hay costos ocultos y te acompañamos en cada paso. Además, Fincentiva está registrada ante CONDUSEF y supervisada conforme a la ley.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Puedo pagar mi crédito antes del plazo sin penalizaciones?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Sí, puedes realizar pagos anticipados parciales o liquidar totalmente tu crédito en cualquier momento, sin penalización. Los pagos anticipados se aplican directo al saldo capital y se reduce el monto total de intereses.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h3>¿Cómo consulto el estado de mi crédito?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Puedes revisar tu saldo, historial de pagos y recibir comprobantes contactando a tu asesor asignado</a>. También puedes escribirnos o llamarnos a nuestros canales oficiales para cualquier duda o aclaración.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h3>¿En qué casos NO puedo acceder a un crédito de nómina?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Si tu empresa no está afiliada a Fincentiva, si no cumples con la antigüedad requerida, o si tienes incidencias graves en buró de crédito o demandas legales activas, no será posible aprobar el crédito. Consulta con tu RH o nuestro equipo si tienes dudas sobre tu elegibilidad.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div id="empresas" class="faq-panel">
-                <!-- FAQ Items for Para Empresas -->
+            <div id="faq-empresas" class="faq-panel">
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué beneficios obtiene mi organización al afiliarse?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Mejora el clima laboral ofreciendo créditos inmediatos sin riesgo financiero para la empresa; reforzamos retención y productividad del personal.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Qué beneficios obtiene mi empresa al afiliarse con Fincentiva?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            • Mejora la retención y motivación de tu personal<br>
+                            • Acceso a préstamos inmediatos para tus empleados sin costo ni riesgo para la empresa<br>
+                            • Procesos digitales que facilitan la administración<br>
+                            • Sin comprometer recursos propios ni asumir riesgos crediticios<br>
+                            • Fortalecimiento del clima organizacional y reducción de rotación
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Tiene algún costo para la empresa?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>No. La empresa solo actúa como retenedora de los descuentos; Fincentiva asume la operación y el riesgo crediticio.</p></div>
+                    <button class="faq-question">
+                        <h3>¿La empresa asume algún riesgo, responsabilidad o costo?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            No. La empresa no es aval ni obligado solidario. Solo realiza el descuento y transferencia de los pagos a Fincentiva según el convenio firmado. Fincentiva asume todo el riesgo crediticio y la gestión operativa.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cómo se formaliza la alianza?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Se firma un Convenio de Prestación de Servicios Crediticios que detalla obligaciones y el procedimiento de retención quincenal o semanal.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cómo se formaliza la afiliación entre la empresa y Fincentiva?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Se firma un convenio de prestación de servicios crediticios donde se establecen claramente las responsabilidades, procesos de retención, fechas de transferencia y protección de datos personales. Todo el proceso es digital y acompañado por nuestro equipo legal.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué responsabilidades adquiere Recursos Humanos?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Únicamente retener y enterar el monto indicado por Fincentiva a cada colaborador hasta liquidar su crédito; todo queda automatizado.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cuáles son las responsabilidades del área de Recursos Humanos?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            RH únicamente realiza el descuento quincenal o mensual y transfiere los montos a Fincentiva en tiempo y forma. Además, debe avisar de inmediato cualquier baja, incapacidad o cambio en la situación laboral de empleados con crédito activo.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cómo se protege la información de los empleados?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Fincentiva cumple con la Ley de Protección de Datos y utiliza mandatos irrevocables firmados por cada colaborador para autorizar descuentos.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cómo protege Fincentiva la información confidencial de mis empleados?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Cumplimos estrictamente la Ley Federal de Protección de Datos Personales. Usamos cifrado de grado bancario, protocolos certificados y todos los colaboradores firman un mandato irrevocable autorizando los descuentos y el tratamiento de su información.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cuánto tiempo tarda la empresa en habilitar el servicio?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Tras la firma del convenio y la carga inicial de empleados, el portal queda operativo en pocos días; Fincentiva ofrece capacitación y soporte.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cuánto tiempo toma implementar el programa en mi empresa?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Tras la firma del convenio, la implementación y capacitación toma de 1 a 3 días hábiles. Brindamos soporte técnico y administrativo durante todo el proceso.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Podemos extender el beneficio a crédito automotriz o a familiares?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Sí. Además del producto vía nómina, la empresa puede referir a sus colaboradores o clientes interesados en crédito automotriz y obtener ventajas adicionales.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Existen empresas que NO puedan afiliarse a Fincentiva?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Por prevención de lavado de dinero y cumplimiento legal, no afiliamos empresas de alto riesgo como casinos, gasolineras, casas de cambio, casas de empeño, centros nocturnos, joyerías, agencias aduanales, entre otros. Solicita la lista completa a nuestro equipo si tienes dudas.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h3>¿Pueden acceder familiares de empleados a otros productos financieros?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Sí, los colaboradores pueden referir familiares para crédito automotriz, ampliando así el valor de la prestación. Consulta los requisitos específicos con tu asesor.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <div id="automotriz" class="faq-panel">
-                <!-- FAQ Items for Crédito Automotriz -->
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Quién puede tramitar el crédito automotriz?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Personas físicas con ingresos comprobables y agencias afiliadas que deseen ofrecer financiamiento a sus clientes. No importa si el cliente tiene historial mixto; evaluamos cada caso de forma personalizada.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Quién puede acceder al crédito automotriz de Fincentiva?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Personas físicas con ingresos comprobables mínimos de $15,000 mensuales, colaboradores de empresas afiliadas y clientes referidos por agencias/lotes aliados. Se requiere enganche mínimo del 30% del valor del auto y cumplir con la política de evaluación de crédito.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué vehículos son elegibles?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Aceptamos unidades seminuevas recientes y modelos actuales (solo se excluyen autos muy antiguos o sin documentación).</p></div>
+                    <button class="faq-question">
+                        <h3>¿Puedo obtener un crédito automotriz si estoy en buró de crédito?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Sí. Evaluamos solicitudes de personas con historial negativo en buró de crédito, siempre y cuando comprueben ingresos y puedan cubrir el enganche mínimo. Cada caso es evaluado de manera personalizada.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué documentos se requieren para la evaluación?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Identificación oficial (INE o pasaporte), comprobantes de ingresos recientes, comprobante de domicilio y solicitud de crédito firmada.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Necesito aval para mi crédito automotriz?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            No. En Fincentiva nunca pedimos aval para crédito automotriz. El vehículo mismo es la garantía prendaria y el proceso es totalmente transparente y seguro para ti.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Cómo es el proceso de aprobación?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>1) Cotización y simulador en línea; 2) Entrega de documentos vía WhatsApp o portal; 3) Evaluación y capacidad de pago en tiempo récord; 4) Firma digital del contrato; 5) Instalación de GPS y entrega de la unidad.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Qué tipo de vehículos puedo financiar?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Financiamos autos nuevos y seminuevos, modelos 2016 en adelante, hasta 8 años de antigüedad, incluyendo autos, SUVs, pickups y vehículos comerciales ligeros. El vehículo debe estar legalmente facturado y libre de reportes.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Se exige enganche o pago inicial?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Sí, solicitamos un porcentaje inicial accesible; esto reduce la mensualidad y demuestra compromiso del comprador. (El porcentaje exacto se define caso por caso).</p></div>
+                    <button class="faq-question">
+                        <h3>¿Cuáles son los montos y plazos de financiamiento?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Otorgamos créditos desde $100,000 hasta $500,000 pesos, financiando hasta el 70% del valor del vehículo (30% enganche). Plazos disponibles de 12, 18, 24, 36 y hasta 48 meses, con tasas competitivas y transparentes.
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿El seguro del auto viene incluido?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>El plan contempla un seguro de cobertura amplia financiado junto con el crédito, simplificando trámites y pagos.</p></div>
+                    <button class="faq-question">
+                        <h3>¿Qué documentos necesito para tramitar mi crédito?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            • Identificación oficial vigente<br>
+                            • Comprobantes de ingresos (últimos 3 meses), preferiblemente de nómina<br>
+                            • Comprobante de domicilio<br>
+                            • Referencias personales
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question"><h3>¿Qué gana la agencia al referir clientes?</h3><span class="faq-icon">+</span></div>
-                    <div class="faq-answer"><p>Recibe comisión por cada crédito que se formalice, soporte inmediato de nuestro equipo y procesos simplificados que aceleran la venta.</p></div>
+                    <button class="faq-question">
+                        <h3>¿El seguro del vehículo está incluido y es obligatorio?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Sí, el seguro de cobertura amplia es obligatorio y va incluido en el financiamiento. La póliza queda endosada a favor de Fincentiva durante la vigencia del crédito para proteger tu inversión.
+                        </p>
+                    </div>
                 </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h3>¿Puedo pagar mi crédito automotriz antes de tiempo o reestructurarlo si lo necesito?</h3>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Sí, puedes realizar pagos anticipados sin penalización y reducir intereses. En casos extraordinarios podemos analizar una reestructura que se adapte a tus necesidades.
+                        </p>
+                    </div>
+                </div>
+                
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- CTA -->
     <section class="cta">

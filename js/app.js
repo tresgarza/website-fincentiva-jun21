@@ -9,6 +9,7 @@ import AnimationsManager from './modules/animations.js';
 import HeroManager from './modules/hero.js';
 import ValuePropositionManager from './modules/value-proposition.js?v=2025';
 import SimpleProcessManager from './modules/simple-process.js';
+import PartnersLogoManager from './modules/partners.js';
 
 // Application Configuration
 const APP_CONFIG = {
@@ -19,7 +20,8 @@ const APP_CONFIG = {
     animations: true,
     hero: true,
     valueProposition: true,
-    simpleProcess: true
+    simpleProcess: true,
+    partners: true
   }
 };
 
@@ -66,6 +68,7 @@ class FinanceiraIncentiva {
       hero: () => new HeroManager(),
       valueProposition: () => new ValuePropositionManager(),
       simpleProcess: () => new SimpleProcessManager(),
+      partners: () => new PartnersLogoManager(),
       faq: () => new FAQManager(),
       animations: () => new AnimationsManager()
     };

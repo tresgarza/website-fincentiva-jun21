@@ -1,0 +1,68 @@
+/* ===================================
+   PARTNERS LOGO SCROLLER
+   =================================== */
+
+.partners-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-neutral-0);
+}
+
+.partners-section .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.partners-section .section-header .section-tagline {
+    color: var(--color-primary-600);
+}
+
+.partners-scroller {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+}
+
+.partners-track {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    animation: scroll-partners 40s linear infinite;
+}
+
+.partners-scroller:hover .partners-track {
+    animation-play-state: paused;
+}
+
+.partner-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px; /* Vertical alignment */
+    margin: 0 var(--space-8);
+    flex-shrink: 0;
+}
+
+.partner-logo-item img {
+    max-height: 50px; /* Control logo size */
+    max-width: 150px;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.partner-logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Keyframes for the infinite scroll animation */
+@keyframes scroll-partners {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

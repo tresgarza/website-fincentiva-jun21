@@ -1,0 +1,89 @@
+/* ===================================
+   TESTIMONIALS SECTION
+   =================================== */
+
+.testimonials-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-neutral-50);
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.testimonials-section .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.testimonials-section .section-header h2 {
+    font-size: var(--font-size-4xl);
+    color: var(--color-neutral-800);
+}
+
+.testimonials-section .section-header p {
+    font-size: var(--font-size-lg);
+    color: var(--color-neutral-600);
+    max-width: 48rem;
+    margin: var(--space-2) auto 0;
+}
+
+.testimonial-scroller {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+}
+
+.testimonial-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll 60s linear infinite;
+}
+
+.testimonial-scroller:hover .testimonial-track {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    background-color: var(--color-neutral-0);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin: 0 var(--space-4);
+    width: 380px; /* Fixed width for each card */
+    flex-shrink: 0;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-neutral-200);
+}
+
+.testimonial-card .testimonial-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary-400);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+}
+
+.testimonial-card .testimonial-text {
+    font-size: var(--font-size-md);
+    color: var(--color-neutral-700);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+}
+
+.testimonial-card .testimonial-author {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-800);
+}
+
+.testimonial-card .author-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-500);
+}
+
+/* Keyframes for the infinite scroll animation */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
